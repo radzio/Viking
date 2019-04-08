@@ -2,7 +2,6 @@ package agency.tango.viking.bindings.map;
 
 import android.content.Context;
 import android.util.AttributeSet;
-
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
@@ -16,9 +15,7 @@ import com.google.maps.android.clustering.ClusterItem;
 import com.google.maps.android.clustering.ClusterManager;
 import com.google.maps.android.clustering.algo.Algorithm;
 import com.google.maps.android.heatmaps.HeatmapTileProvider;
-
 import java.util.Collection;
-
 import agency.tango.viking.bindings.map.adapters.ClusterItemWindowInfoAdapter;
 import agency.tango.viking.bindings.map.adapters.ClusterWindowInfoAdapter;
 import agency.tango.viking.bindings.map.adapters.CompositeInfoWindowAdapter;
@@ -29,8 +26,8 @@ import agency.tango.viking.bindings.map.listeners.CompositeMarkerClickListener;
 import agency.tango.viking.bindings.map.listeners.CompositeOnCameraIdleListener;
 import agency.tango.viking.bindings.map.listeners.ItemClickListener;
 import agency.tango.viking.bindings.map.listeners.MarkerClickListener;
-import agency.tango.viking.bindings.map.listeners.OnMarkerClickListener;
 import agency.tango.viking.bindings.map.listeners.MarkerDragListener;
+import agency.tango.viking.bindings.map.listeners.OnMarkerClickListener;
 import agency.tango.viking.bindings.map.listeners.OverlayClickListener;
 import agency.tango.viking.bindings.map.listeners.PolygonClickListener;
 import agency.tango.viking.bindings.map.listeners.PolylineClickListener;
@@ -50,13 +47,13 @@ import agency.tango.viking.bindings.map.models.BindablePolygon;
 import agency.tango.viking.bindings.map.models.BindablePolyline;
 
 public class GoogleMapView<T> extends MapView {
+  private static final float DEFAULT_MAP_CENTER_ZOOM = 16f;
+  private static final float DEFAULT_PADDING = 25f;
 
-  private BindableItem<LatLng> latLng = new BindableItem<>(value -> {
-    getMapAsync(googleMap -> googleMap.moveCamera(CameraUpdateFactory.newLatLng(value)));
-  });
-  private BindableItem<Float> zoom = new BindableItem<>(value -> {
-    getMapAsync(googleMap -> googleMap.moveCamera(CameraUpdateFactory.zoomTo(value)));
-  });
+  private BindableItem<LatLng> latLng;
+  private BindableItem<Float> zoom;
+  private BindableItem<LatLngBounds> bounds;
+  private BindableItem<Float> padding;
   private BindableItem<Integer> radius = new BindableItem<>();
 
   private MarkerManager<T> markerManager;
@@ -64,7 +61,6 @@ public class GoogleMapView<T> extends MapView {
   private OverlayManager overlayManager;
   private CircleManager circleManager;
   private PolygonManager polygonManager;
-
   private CustomClusterManager<ClusterItem> customClusterManager;
 
   private TileOverlay heatMapTileOverlay;
@@ -105,9 +101,33 @@ public class GoogleMapView<T> extends MapView {
     return zoom;
   }
 
+  public BindableItem<LatLngBounds> bounds() {
+    return bounds;
+  }
+
+  public BindableItem<Float> padding() {
+    return padding;
+  }
+
   public void postChangedLocation(LatLng latLng) {
+    disable();
     getMapAsync(googleMap -> googleMap.moveCamera(CameraUpdateFactory.newLatLng(latLng)));
-    this.latLng.setValue(latLng);
+    this.latLng.setValueAndDisable(latLng);
+
+  }
+
+  public void enable() {
+    latLng.enable();
+    zoom.enable();
+    bounds.enable();
+    padding.enable();
+  }
+
+  public void disable() {
+    latLng.disable();
+    zoom.disable();
+    bounds.disable();
+    padding.disable();
   }
 
   //region Listeners
@@ -535,6 +555,7 @@ public class GoogleMapView<T> extends MapView {
   }
 
   private void init() {
+    initializeBindableItems();
     initializeManagers();
     initializeListeners();
 
@@ -543,10 +564,46 @@ public class GoogleMapView<T> extends MapView {
 
       onCameraIdleListener.addOnCameraIdleListener(() -> {
         latLng.setValue(getLatLng(googleMap));
+        bounds.setValue(googleMap.getProjection().getVisibleRegion().latLngBounds);
         zoom.setValue(googleMap.getCameraPosition().zoom);
         radius.setValue(currentRadius(googleMap));
       });
     });
+  }
+
+  private void initializeBindableItems() {
+    bounds = new BindableItem<>(value -> getMapAsync(googleMap -> {
+      disable();
+      float finalPadding = padding.getValue() != null ? padding.getValue() : DEFAULT_PADDING;
+      googleMap.animateCamera(CameraUpdateFactory.newLatLngBounds(value, getWidth(), getHeight(),
+          convertDpToPixel(finalPadding)));
+    }));
+
+    padding = new BindableItem<>(value -> getMapAsync(googleMap -> {
+      disable();
+      if (bounds.getValue() != null) {
+        googleMap.animateCamera(CameraUpdateFactory.newLatLngBounds(bounds.getValue(), getWidth(),
+            getHeight(), convertDpToPixel(value)));
+      }
+    }));
+
+    zoom = new BindableItem<>(value -> getMapAsync(googleMap -> {
+      disable();
+      googleMap.moveCamera(CameraUpdateFactory.zoomTo(value));
+    }));
+
+    latLng = new BindableItem<>(value -> getMapAsync(googleMap -> {
+      disable();
+
+      float mapCenterZoom;
+      if (zoom() != null) {
+        mapCenterZoom = DEFAULT_MAP_CENTER_ZOOM;
+      } else {
+        mapCenterZoom = zoom().getValue();
+      }
+
+      googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(value, mapCenterZoom));
+    }));
   }
 
   private void initializeManagers() {
@@ -560,6 +617,9 @@ public class GoogleMapView<T> extends MapView {
 
   private void initializeListeners() {
     onCameraIdleListener = new CompositeOnCameraIdleListener();
+
+    onCameraIdleListener.addOnCameraIdleListener(() -> post(this::enable));
+
     infoWindowAdapter = new CompositeInfoWindowAdapter();
     markerClickListener = new CompositeMarkerClickListener();
     infoWindowClickListener = new CompositeInfoWindowClickListener();
@@ -598,4 +658,9 @@ public class GoogleMapView<T> extends MapView {
     return width > height ? width : height;
   }
 
+  private int convertDpToPixel(float dp) {
+    float density = getContext().getResources().getDisplayMetrics().density;
+    float px = dp * density;
+    return Math.round(px);
+  }
 }
