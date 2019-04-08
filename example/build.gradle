@@ -38,7 +38,10 @@ android {
 
 dependencies {
 
-    annotationProcessor project(":viking-processor")
+   // annotationProcessor project(":viking-processor")
+
+    annotationProcessor "com.github.TangoAgency.Viking:viking-processor:50af0514b9"
+
     implementation project(":viking-annotations")
     implementation project(":viking-di")
     implementation project(":viking-mvp")
@@ -50,8 +53,8 @@ dependencies {
     implementation deps.googlePlayServicesMaps
     implementation deps.googleMapsUtils
 
-    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0-alpha1'
-    annotationProcessor 'androidx.lifecycle:lifecycle-compiler:2.0.0-alpha1'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0-alpha04'
+    annotationProcessor 'androidx.lifecycle:lifecycle-compiler:2.1.0-alpha04'
 
     implementation deps.rxJava
     implementation deps.rxAndroid
@@ -64,19 +67,19 @@ dependencies {
     })
     annotationProcessor deps.daggerAndroidProccesor
 
-    implementation 'androidx.appcompat:appcompat:1.0.0-alpha3'
-    implementation 'androidx.core:core:1.0.0-alpha3'
+    implementation 'androidx.appcompat:appcompat:1.1.0-alpha04'
+    implementation 'androidx.core:core:1.1.0-alpha05'
 
-    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0-alpha1'
-    annotationProcessor 'androidx.lifecycle:lifecycle-compiler:2.0.0-alpha1'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0-alpha04'
+    annotationProcessor 'androidx.lifecycle:lifecycle-compiler:2.1.0-alpha04'
 
 //    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5.4'
 //    releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
 
-    androidTestImplementation 'androidx.annotation:annotation:1.0.0-alpha3'
-    androidTestImplementation 'androidx.test:runner:1.1.0-alpha3'
-    androidTestImplementation 'androidx.test:rules:1.1.0-alpha3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha3'
+    androidTestImplementation 'androidx.annotation:annotation:1.1.0-beta01'
+    androidTestImplementation 'androidx.test:runner:1.2.0-alpha03'
+    androidTestImplementation 'androidx.test:rules:1.2.0-alpha03'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0-alpha03'
 
     testImplementation deps.junit
 }

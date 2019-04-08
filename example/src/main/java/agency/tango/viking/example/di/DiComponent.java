@@ -2,7 +2,7 @@ package agency.tango.viking.example.di;
 
 import android.app.Application;
 import net.droidlabs.dagger.annotations.AppScope;
-import agency.tango.viking.di.ScreenMappings;
+//import agency.tango.viking.di.ScreenMappings;
 import dagger.BindsInstance;
 import dagger.Component;
 import dagger.android.AndroidInjectionModule;
@@ -14,7 +14,7 @@ import dagger.android.support.AndroidSupportInjectionModule;
 @Component(modules = {
     AndroidInjectionModule.class,
     AndroidSupportInjectionModule.class,
-    ScreenMappings.class,
+   // ScreenMappings.class,
     AppModule.class,
     //ViewModelMappings.class,
     TestModule.class,

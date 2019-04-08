@@ -1,10 +1,12 @@
 package agency.tango.viking.example;
 
-import android.content.Context;
 import agency.tango.viking.example.di.DaggerDiComponent;
+import android.content.Context;
 import androidx.multidex.MultiDex;
 import dagger.android.AndroidInjector;
 import dagger.android.DaggerApplication;
+
+//import agency.tango.viking.example.di.DaggerDiComponent;
 
 public class App extends DaggerApplication {
 
