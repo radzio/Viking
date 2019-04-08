@@ -1,0 +1,36 @@
+apply plugin: 'com.android.library'
+apply from: '../jacoco-android.gradle'
+
+android {
+  compileSdkVersion rootProject.ext.compileSdkVersion
+  buildToolsVersion rootProject.ext.buildToolsVersion
+
+  defaultConfig {
+    minSdkVersion rootProject.ext.minSdkVersion
+    targetSdkVersion rootProject.ext.targetSdkVersion
+    versionCode 1
+    versionName "1.0"
+
+    testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+  }
+  buildTypes {
+    release {
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+    }
+  }
+}
+
+dependencies {
+  compile fileTree(dir: 'libs', include: ['*.jar'])
+  androidTestCompile('androidx.test.espresso:espresso-core:3.1.0-alpha3', {
+    exclude group: 'com.android.support', module: 'support-annotations'
+  })
+
+  provided project(":viking-mvvm")
+
+  implementation deps.googlePlayServicesMaps
+}
+
+apply from: rootProject.file('gradle/gradle-mvn-push.gradle')

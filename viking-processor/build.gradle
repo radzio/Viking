@@ -1,8 +1,54 @@
 apply plugin: 'java'
+// apply plugin: 'com.novoda.bintray-release'
+apply from: '../jacoco.gradle'
 
-dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+def logger = new com.android.build.gradle.internal.LoggerWrapper(project.logger)
+def sdkHandler = new com.android.build.gradle.internal.SdkHandler(project, logger)
+for (File file : sdkHandler.sdkLoader.repositories) {
+  repositories.maven {
+    url = file.toURI()
+  }
 }
 
-sourceCompatibility = "1.7"
-targetCompatibility = "1.7"
+sourceCompatibility = rootProject.ext.sourceCompatibilityVersion
+targetCompatibility = rootProject.ext.targetCompatibilityVersion
+
+dependencies {
+
+  compile project(':viking-annotations')
+  compile project(':viking-di')
+
+  compile deps.autoservice
+  compile deps.autocommon
+  compile deps.javapoet
+
+  compileOnly deps.guava
+
+  compileOnly deps.dagger
+  compileOnly deps.daggerAndroid
+  //compileOnly deps.daggerAndroidSupport
+
+  //compileOnly deps.archCompontentsImplementation
+
+  compileOnly files(org.gradle.internal.jvm.Jvm.current().getToolsJar())
+
+  testCompile 'com.google.testing.compile:compile-testing:0.9'
+  testCompile files(org.gradle.internal.jvm.Jvm.current().getToolsJar())
+  testCompile deps.junit
+  testCompile deps.truth
+
+  testCompile deps.dagger
+  testCompile deps.daggerAndroidProccesor
+  testCompile deps.android
+}
+
+//publish {
+//  userOrg = 'tangoagency'
+//  groupId = 'agency.tango.android.viking'
+//  artifactId = 'viking-processor'
+//  publishVersion = '0.0.1'
+//  desc = ''
+//  website = 'https://github.com/TangoAgency/Viking'
+//}
+
+apply from: rootProject.file('gradle/gradle-mvn-push.gradle')

@@ -1,29 +1,82 @@
 apply plugin: 'com.android.application'
+apply from: '../jacoco-android.gradle'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+
+    compileOptions {
+        encoding "UTF-8"
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
     defaultConfig {
-        applicationId "agency.tango.viking.examp"
-        minSdkVersion 15
-        targetSdkVersion 25
+        applicationId "agency.tango.viking.example"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+    signingConfigs {
+        debug {
+            storeFile file('debug.keystore')
         }
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+    lintOptions {
+        abortOnError false
     }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
+
+    annotationProcessor project(":viking-processor")
+    implementation project(":viking-annotations")
+    implementation project(":viking-di")
+    implementation project(":viking-mvp")
+    implementation project(":viking-mvvm")
+    implementation project(":viking-reactive")
+    implementation project(":viking-mapbindings")
+    implementation project(":viking-map-aware-views")
+
+    implementation deps.googlePlayServicesMaps
+    implementation deps.googleMapsUtils
+
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0-alpha1'
+    annotationProcessor 'androidx.lifecycle:lifecycle-compiler:2.0.0-alpha1'
+
+    implementation deps.rxJava
+    implementation deps.rxAndroid
+
+    implementation deps.dagger
+    annotationProcessor deps.daggerCompiler
+    implementation deps.daggerAndroid
+    implementation (deps.daggerAndroidSupport, {
+        exclude group: 'com.android.support'
     })
-    compile 'com.android.support:appcompat-v7:25.1.0'
-    testCompile 'junit:junit:4.12'
+    annotationProcessor deps.daggerAndroidProccesor
+
+    implementation 'androidx.appcompat:appcompat:1.0.0-alpha3'
+    implementation 'androidx.core:core:1.0.0-alpha3'
+
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0-alpha1'
+    annotationProcessor 'androidx.lifecycle:lifecycle-compiler:2.0.0-alpha1'
+
+//    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5.4'
+//    releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
+
+    androidTestImplementation 'androidx.annotation:annotation:1.0.0-alpha3'
+    androidTestImplementation 'androidx.test:runner:1.1.0-alpha3'
+    androidTestImplementation 'androidx.test:rules:1.1.0-alpha3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha3'
+
+    testImplementation deps.junit
 }

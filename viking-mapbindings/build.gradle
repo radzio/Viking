@@ -1,31 +1,65 @@
 apply plugin: 'com.android.library'
+// apply plugin: 'com.novoda.bintray-release'
+apply from: '../jacoco-android.gradle'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    compileOptions {
+        encoding "UTF-8"
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 
     defaultConfig {
-        minSdkVersion 15
-        targetSdkVersion 25
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
 
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+
+    dataBinding {
+        enabled = true
+    }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    lintOptions {
+        abortOnError false
+    }
 }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+
+    implementation deps.googlePlayServicesMaps
+    implementation deps.googleMapsUtils
+    //implementation deps.googlePlayServicesMaps
+
+    androidTestCompile('androidx.test.espresso:espresso-core:3.1.0-alpha3', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:25.1.0'
-    testCompile 'junit:junit:4.12'
+
+    testCompile deps.junit
+    testCompile deps.mockito
+    testCompile deps.robolectric
 }
+
+//publish {
+//    userOrg = 'tangoagency'
+//    groupId = 'agency.tango.android.viking'
+//    artifactId = 'viking-mapbindings'
+//    publishVersion = '0.0.1'
+//    desc = ''
+//    website = 'https://github.com/TangoAgency/Viking'
+//}
+
+apply from: rootProject.file('gradle/gradle-mvn-push.gradle')
