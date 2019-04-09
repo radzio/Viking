@@ -1,4 +1,6 @@
 apply plugin: 'com.android.library'
+apply plugin: "kotlin-android"
+apply plugin: 'kotlin-kapt'
 // apply plugin: 'com.novoda.bintray-release'
 apply from: '../jacoco-android.gradle'
 
@@ -33,17 +35,19 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 
-    compile 'androidx.fragment:fragment:1.0.0-alpha3'
-    compile 'androidx.appcompat:appcompat:1.0.0-alpha3'
+    implementation 'androidx.fragment:fragment:1.1.0-alpha06'
+    implementation 'androidx.appcompat:appcompat:1.1.0-alpha04'
     compile deps.javax
 
-    compile 'androidx.lifecycle:lifecycle-extensions:2.0.0-alpha1'
-    annotationProcessor 'androidx.lifecycle:lifecycle-compiler:2.0.0-alpha1'
-    compile deps.daggerAndroid
-    compile (deps.daggerAndroidSupport, {
+    implementation deps.kotlinStdLib
+
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0-alpha04'
+    kapt 'androidx.lifecycle:lifecycle-compiler:2.1.0-alpha04'
+    implementation deps.daggerAndroid
+    implementation (deps.daggerAndroidSupport, {
         exclude group: 'com.android.support'
     })
-    annotationProcessor deps.daggerAndroidProccesor
+    kapt deps.daggerAndroidProccesor
 
     androidTestCompile('androidx.test.espresso:espresso-core:3.1.0-alpha3', {
         exclude group: 'com.android.support', module: 'support-annotations'
@@ -54,7 +58,7 @@ dependencies {
 //
 //publish {
 //    userOrg = 'tangoagency'
-//    groupId = 'agency.tango.android.viking'
+//    groupId = 'net.droidlabsandroid.viking'
 //    artifactId = 'viking-mvvm'
 //    publishVersion = '0.0.1'
 //    desc = ''

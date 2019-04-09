@@ -1,4 +1,6 @@
 apply plugin: 'com.android.application'
+apply plugin: "kotlin-android"
+apply plugin: 'kotlin-kapt'
 apply from: '../jacoco-android.gradle'
 
 android {
@@ -12,7 +14,7 @@ android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
     defaultConfig {
-        applicationId "agency.tango.viking.example"
+        applicationId "net.droidlabs.viking.example"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
@@ -38,9 +40,9 @@ android {
 
 dependencies {
 
-   // annotationProcessor project(":viking-processor")
+    kapt project(":viking-processor")
 
-    annotationProcessor "com.github.TangoAgency.Viking:viking-processor:50af0514b9"
+    //kapt "com.github.radzio.Viking:viking-processor:23b0ee818f"
 
     implementation project(":viking-annotations")
     implementation project(":viking-di")
@@ -54,24 +56,26 @@ dependencies {
     implementation deps.googleMapsUtils
 
     implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0-alpha04'
-    annotationProcessor 'androidx.lifecycle:lifecycle-compiler:2.1.0-alpha04'
+    kapt 'androidx.lifecycle:lifecycle-compiler:2.1.0-alpha04'
 
     implementation deps.rxJava
     implementation deps.rxAndroid
 
+    implementation deps.kotlinStdLib
+
     implementation deps.dagger
-    annotationProcessor deps.daggerCompiler
+    kapt deps.daggerCompiler
     implementation deps.daggerAndroid
     implementation (deps.daggerAndroidSupport, {
         exclude group: 'com.android.support'
     })
-    annotationProcessor deps.daggerAndroidProccesor
+    kapt deps.daggerAndroidProccesor
 
     implementation 'androidx.appcompat:appcompat:1.1.0-alpha04'
     implementation 'androidx.core:core:1.1.0-alpha05'
 
     implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0-alpha04'
-    annotationProcessor 'androidx.lifecycle:lifecycle-compiler:2.1.0-alpha04'
+    kapt 'androidx.lifecycle:lifecycle-compiler:2.1.0-alpha04'
 
 //    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5.4'
 //    releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'

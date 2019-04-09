@@ -1,4 +1,7 @@
 apply plugin: 'com.android.library'
+apply plugin: "kotlin-android"
+apply plugin: 'kotlin-kapt'
+
 apply from: '../jacoco-android.gradle'
 
 android {
@@ -20,6 +23,10 @@ android {
       proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
     }
   }
+
+  dataBinding {
+    enabled = true
+  }
 }
 
 dependencies {
@@ -30,7 +37,21 @@ dependencies {
 
   provided project(":viking-mvvm")
 
+  implementation deps.daggerAndroid
+  implementation (deps.daggerAndroidSupport, {
+    exclude group: 'com.android.support'
+  })
+
+  implementation 'androidx.fragment:fragment:1.1.0-alpha06'
+  implementation 'androidx.appcompat:appcompat:1.1.0-alpha04'
+
+  implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0-alpha04'
+  kapt 'androidx.lifecycle:lifecycle-compiler:2.1.0-alpha04'
+
+
   implementation deps.googlePlayServicesMaps
+
+  implementation deps.kotlinStdLib
 }
 
 apply from: rootProject.file('gradle/gradle-mvn-push.gradle')

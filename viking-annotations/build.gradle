@@ -22,7 +22,7 @@ dependencies {
 
 //publish {
 //    userOrg = 'tangoagency'
-//    groupId = 'agency.tango.android.viking'
+//    groupId = 'net.droidlabsandroid.viking'
 //    artifactId = 'viking-annotations'
 //    publishVersion = '0.0.1'
 //    desc = ''

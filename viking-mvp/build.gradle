@@ -1,4 +1,6 @@
 apply plugin: 'com.android.library'
+apply plugin: "kotlin-android"
+apply plugin: 'kotlin-kapt'
 // apply plugin: 'com.novoda.bintray-release'
 apply from: '../jacoco-android.gradle'
 
@@ -26,6 +28,8 @@ android {
 dependencies {
   compile fileTree(dir: 'libs', include: ['*.jar'])
 
+  implementation deps.kotlinStdLib
+
   compile 'androidx.appcompat:appcompat:1.0.0-alpha3'
 
   compile 'androidx.lifecycle:lifecycle-extensions:2.0.0-alpha1'
@@ -45,7 +49,7 @@ dependencies {
 //
 //publish {
 //  userOrg = 'tangoagency'
-//  groupId = 'agency.tango.android.viking'
+//  groupId = 'net.droidlabsandroid.viking'
 //  artifactId = 'viking-mvp'
 //  publishVersion = '0.0.1'
 //  desc = ''

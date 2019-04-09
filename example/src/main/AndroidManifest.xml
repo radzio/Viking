@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="agency.tango.viking.example"
+          package="net.droidlabs.viking.example"
   >
 
   <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
@@ -10,7 +10,7 @@
     />
 
   <application
-    android:name=".App"
+    android:name="net.droidlabs.viking.example.App"
     android:allowBackup="true"
     android:icon="@mipmap/ic_launcher"
     android:label="@string/app_name"
@@ -20,10 +20,10 @@
 
   <uses-library android:name="org.apache.http.legacy" android:required="false"/>
 
-    <activity android:name=".MvvmMainActivity"/>
-    <activity android:name=".MvvmSecondActivity"/>
+    <activity android:name="net.droidlabs.viking.example.MvvmMainActivity"/>
+    <activity android:name="net.droidlabs.viking.example.MvvmSecondActivity"/>
 
-    <activity android:name=".MapActivity">
+    <activity android:name="net.droidlabs.viking.example.MapActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN"/>
         <category android:name="android.intent.category.LAUNCHER"/>

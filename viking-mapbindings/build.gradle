@@ -1,4 +1,6 @@
 apply plugin: 'com.android.library'
+apply plugin: "kotlin-android"
+apply plugin: 'kotlin-kapt'
 // apply plugin: 'com.novoda.bintray-release'
 apply from: '../jacoco-android.gradle'
 
@@ -42,7 +44,8 @@ dependencies {
 
     implementation deps.googlePlayServicesMaps
     implementation deps.googleMapsUtils
-    //implementation deps.googlePlayServicesMaps
+
+    implementation deps.kotlinStdLib
 
     androidTestCompile('androidx.test.espresso:espresso-core:3.1.0-alpha3', {
         exclude group: 'com.android.support', module: 'support-annotations'
@@ -55,7 +58,7 @@ dependencies {
 
 //publish {
 //    userOrg = 'tangoagency'
-//    groupId = 'agency.tango.android.viking'
+//    groupId = 'net.droidlabsandroid.viking'
 //    artifactId = 'viking-mapbindings'
 //    publishVersion = '0.0.1'
 //    desc = ''

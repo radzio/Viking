@@ -16,7 +16,7 @@ public class MapActivity extends MapAwareActivityView<VM extends ViewModel, VD e
 ### Step 3:
 Add to your [xml][activity_map.xml]
 ```xml
- <agency.tango.viking.bindings.map.GoogleMapView
+ <net.droidlabs.viking.bindings.map.GoogleMapView
       android:id="@+id/map"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
@@ -60,7 +60,7 @@ Before last step you need to make List bindable.
 ```
 Now just bind list in your XML view
 ```xml
-  <agency.tango.viking.bindings.map.GoogleMapView
+  <net.droidlabs.viking.bindings.map.GoogleMapView
       bind:gmv_markers="@{viewModel.models}"/>
 ```
 
@@ -84,7 +84,7 @@ public OnMarkerClickListener<BindableMarker<ExampleModel>> getMarkerClickListene
   Now you need to bind that in XML
 
 ```xml
-   <agency.tango.viking.bindings.map.GoogleMapView
+   <net.droidlabs.viking.bindings.map.GoogleMapView
             bind:gmv_markerClickListener="@{viewModel.markerClickListener}"/>
 ```
 
@@ -126,7 +126,7 @@ public InfoWindowAdapterFactory<BindableMarker<ExampleModel>> getInfoWindowAdapt
 Then add to your XML
 
 ```xml
-<agency.tango.viking.bindings.map.GoogleMapView
+<net.droidlabs.viking.bindings.map.GoogleMapView
       bind:gmv_infoWindowAdapter="@{viewModel.infoWindowAdapter}" />
 ```
 
@@ -149,7 +149,7 @@ If you want to add on info window click listener add a ```@Bindable``` method in
 Then add to your XML
 
 ```xml
-     <agency.tango.viking.bindings.map.GoogleMapView
+     <net.droidlabs.viking.bindings.map.GoogleMapView
  		bind:gmv_infoWindowClickListener="@{viewModel.infoWindowClickListener}" />
 ```
 
@@ -173,7 +173,7 @@ public ItemClickListener<ExampleModel> getInfoWindowCloseListener()
 Then add to your XML
 
 ```xml
- <agency.tango.viking.bindings.map.GoogleMapView
+ <net.droidlabs.viking.bindings.map.GoogleMapView
  		bind:gmv_infoWindowCloseListener="@{viewModel.infoWindowCloseListener}" />
 ```
 
@@ -198,7 +198,7 @@ public ItemClickListener<ExampleModel> getInfoWindowLongClickListener()
 Then add to your XML
 
 ```xml
-<agency.tango.viking.bindings.map.GoogleMapView
+<net.droidlabs.viking.bindings.map.GoogleMapView
  		bind:gmv_infoWindowLongClickListener="@{viewModel.infoWindowLongClickListener}" />
 ```
 
@@ -232,7 +232,7 @@ To set on marker drag listener you need to create a ```@Bindable``` method in yo
 Then add to your XML
 
 ```xml
-<agency.tango.viking.bindings.map.GoogleMapView
+<net.droidlabs.viking.bindings.map.GoogleMapView
  		bind:gmv_markerDragListener="@{viewModel.markerDragListener}" />
 ```
 
@@ -253,7 +253,7 @@ To set on camera move started listener you need to create a ```@Bindable``` meth
 Then add to your XML
 
 ```xml
-<agency.tango.viking.bindings.map.GoogleMapView
+<net.droidlabs.viking.bindings.map.GoogleMapView
  		bind:gmv_cameraMoveStartedListener="@{viewModel.cameraMoveStartedListener}" />
 ```
 
@@ -273,7 +273,7 @@ To set on camera move cancelled listener you need to create a ```@Bindable``` me
  Then add to your XML
 
 ```xml
-<agency.tango.viking.bindings.map.GoogleMapView
+<net.droidlabs.viking.bindings.map.GoogleMapView
  		bind:gmv_cameraMoveCanceledListener="@{viewModel.cameraMoveCanceledListener}" />
 ```
 
@@ -293,7 +293,7 @@ To add on camera idle listener you need to create a ```@Bindable``` method in yo
  Then add to your XML
 
 ```xml
-<agency.tango.viking.bindings.map.GoogleMapView
+<net.droidlabs.viking.bindings.map.GoogleMapView
  		bind:gmv_cameraIdleListener="@{viewModel.cameraIdleListener}" />
 ```
 
@@ -313,7 +313,7 @@ To add on camera move listener you need to create a ```@Bindable``` method in yo
  Then add to your XML
 
 ```xml
-<agency.tango.viking.bindings.map.GoogleMapView
+<net.droidlabs.viking.bindings.map.GoogleMapView
  		bind:gmv_cameraMoveListener="@{viewModel.cameraMoveListener}" />
 ```
 
@@ -344,7 +344,7 @@ Before last step you need to make List bindable.
 ```
 Now just bind list in your XML view
 ```xml
-  <agency.tango.viking.bindings.map.GoogleMapView
+  <net.droidlabs.viking.bindings.map.GoogleMapView
       bind:gmv_circles="@{viewModel.circles}"/>
 ```
 
@@ -367,7 +367,7 @@ To bind OnClickListener to the circle first you need to create a ```@Bindable```
   Now you need to bind that in XML
 
 ```xml
-   <agency.tango.viking.bindings.map.GoogleMapView
+   <net.droidlabs.viking.bindings.map.GoogleMapView
             bind:gmv_circleClickListener="@{viewModel.circleClickListener}"/>
 ```
 
@@ -398,7 +398,7 @@ Before last step you need to make List bindable.
 ```
 Now just bind list in your XML view
 ```xml
-  <agency.tango.viking.bindings.map.GoogleMapView
+  <net.droidlabs.viking.bindings.map.GoogleMapView
       bind:gmv_groundOverlays="@{viewModel.groundOverlays}"/>
 ```
 
@@ -421,7 +421,7 @@ To bind OnClickListener to the ground overlay first you need to create a ```@Bin
   Now you need to bind that in XML
 
 ```xml
-   <agency.tango.viking.bindings.map.GoogleMapView
+   <net.droidlabs.viking.bindings.map.GoogleMapView
             bind:gmv_groundOverlayClickListener="@{viewModel.groundOverlayClickListener}"/>
 ```
 
@@ -455,7 +455,7 @@ Before last step you need to make List bindable.
 ```
 Now just bind list in your XML view
 ```xml
-  <agency.tango.viking.bindings.map.GoogleMapView
+  <net.droidlabs.viking.bindings.map.GoogleMapView
       bind:gmv_polygons="@{viewModel.polygons}"/>
 ```
 
@@ -478,7 +478,7 @@ To bind OnClickListener to the polygon first you need to create a ```@Bindable``
   Now you need to bind that in XML
 
 ```xml
-   <agency.tango.viking.bindings.map.GoogleMapView
+   <net.droidlabs.viking.bindings.map.GoogleMapView
             bind:gmv_polygonClickListener="@{viewModel.polygonClickListener}"/>
 ```
 
@@ -510,7 +510,7 @@ Before last step you need to make List bindable.
 ```
 Now just bind list in your XML view
 ```xml
-  <agency.tango.viking.bindings.map.GoogleMapView
+  <net.droidlabs.viking.bindings.map.GoogleMapView
       bind:gmv_polylines="@{viewModel.polylines}"/>
 ```
 
@@ -532,7 +532,7 @@ Now just bind list in your XML view
   Now you need to bind that in XML
 
 ```xml
-   <agency.tango.viking.bindings.map.GoogleMapView
+   <net.droidlabs.viking.bindings.map.GoogleMapView
             bind:gmv_polylineClickListener="@{viewModel.polylineClickListener}"/>
 ```
 
@@ -560,7 +560,7 @@ Before last step you need to make List bindable.
 ```
 Now just bind list in your XML view
 ```xml
-  <agency.tango.viking.bindings.map.GoogleMapView
+  <net.droidlabs.viking.bindings.map.GoogleMapView
       bind:gmv_clusterItems="@{viewModel.clusterItems}"/>
 ```
 
@@ -585,7 +585,7 @@ Note that ```CustomClusterRenderer``` need to implement ```ClusterRenderer<T>```
 Then add to your XML
 
 ```xml
-<agency.tango.viking.bindings.map.GoogleMapView
+<net.droidlabs.viking.bindings.map.GoogleMapView
     bind:gmv_rendererFactory="@{viewModel.rendererFactory }"	/>
 ```
 
@@ -605,7 +605,7 @@ To bind custom algorithm you need to create a ```@Bindable``` method in your jav
 Then add to your XML
 
 ```xml
-<agency.tango.viking.bindings.map.GoogleMapView
+<net.droidlabs.viking.bindings.map.GoogleMapView
     bind:gmv_algorithm="@{viewModel.algorithm }"	/>
 ```
 
@@ -644,7 +644,7 @@ Then add to your XML
   Then add to your XML
 
 ```xml
-  <agency.tango.viking.bindings.map.GoogleMapView
+  <net.droidlabs.viking.bindings.map.GoogleMapView
         bind:gmv_clusterItemInfoWindowAdapter="@{viewModel.clusterItemInfoWindowAdapter}" />
 ```
 
@@ -686,7 +686,7 @@ Then add to your XML
   Then add to your XML
 
 ```xml
-  <agency.tango.viking.bindings.map.GoogleMapView
+  <net.droidlabs.viking.bindings.map.GoogleMapView
         bind:gmv_clusterInfoWindowAdapter="@{viewModel.clusterInfoWindowAdapter}" />
 ```
 
@@ -709,7 +709,7 @@ To bind OnClusterClickListener you need to create a ```@Bindable``` method which
 Then add to your XML
 
 ```xml
-  <agency.tango.viking.bindings.map.GoogleMapView
+  <net.droidlabs.viking.bindings.map.GoogleMapView
         bind:gmv_clusterClickListener="@{viewModel.clusterClickListener}" />
 ```
 
@@ -734,7 +734,7 @@ Then add to your XML
   Then add to your XML
 
 ```xml
-  <agency.tango.viking.bindings.map.GoogleMapView
+  <net.droidlabs.viking.bindings.map.GoogleMapView
       bind:gmv_clusterItemClickListener ="@{viewModel.clusterItemClickListener }" />
 ```
 
@@ -757,7 +757,7 @@ public ClusterManager.OnClusterInfoWindowClickListener<ClusterItem> 								getO
 Then add to your XML
 
 ```xml
-<agency.tango.viking.bindings.map.GoogleMapView
+<net.droidlabs.viking.bindings.map.GoogleMapView
     bind:gmv_clusterInfoWindowClickListener="@{viewModel.clusterInfoWindowClickListener}" />
 ```
 
@@ -780,7 +780,7 @@ public ClusterManager.OnClusterItemInfoWindowClickListener<ClusterItem> 							g
 Then add to your XML
 
 ```xml
-<agency.tango.viking.bindings.map.GoogleMapView
+<net.droidlabs.viking.bindings.map.GoogleMapView
     bind:gmv_clusterInfoWindowClickListener="@{viewModel.clusterInfoWindowClickListener}" />
 ```
 
@@ -817,7 +817,7 @@ public void setZoom(float zoom) {
 Then add to your XML
 
 ```xml
-<agency.tango.viking.bindings.map.GoogleMapView
+<net.droidlabs.viking.bindings.map.GoogleMapView
     bind:gmv_zoom="@{viewModel.zoom}" />
 ```
 
@@ -850,7 +850,7 @@ public void setRadius(int radius) {
 Then add to your XML
 
 ```xml
-<agency.tango.viking.bindings.map.GoogleMapView   					   					        	bind:gmv_radius="@{viewModel.radius}" />
+<net.droidlabs.viking.bindings.map.GoogleMapView   					   					        	bind:gmv_radius="@{viewModel.radius}" />
 ```
 
 #### - **```gmv_latLng ```**Two-way data binding for latLng. With this binding, you can set and retrieve center of the map.
@@ -882,7 +882,7 @@ public void setLatLng(LatLng latLng) {
 Then add to your XML
 
 ```xml
-<agency.tango.viking.bindings.map.GoogleMapView
+<net.droidlabs.viking.bindings.map.GoogleMapView
     bind:gmv_latLng="@{viewModel.latLng}" />
 ```
 
@@ -903,7 +903,7 @@ public HeatmapTileProvider getHeatMap(){
 Then add to your XML
 
 ```xml
-<agency.tango.viking.bindings.map.GoogleMapView
+<net.droidlabs.viking.bindings.map.GoogleMapView
     bind:gmv_heatMap="@{viewModel.heatMap}" />
 ```
 
@@ -927,7 +927,7 @@ public GoogleMap.OnMapClickListener getMapClickListener()
 Then add to your XML
 
 ```xml
-<agency.tango.viking.bindings.map.GoogleMapView
+<net.droidlabs.viking.bindings.map.GoogleMapView
     bind:gmv_mapClickListener="@{viewModel.mapClickListener}" />
 ```
 
@@ -951,7 +951,7 @@ public GoogleMap.OnMapLoadedCallback getMapLoadedCallback()
 Then add to your XML
 
 ```xml
-<agency.tango.viking.bindings.map.GoogleMapView
+<net.droidlabs.viking.bindings.map.GoogleMapView
     bind:gmv_mapLoadedCallback="@{viewModel.mapLoadedCallback}" />
 ```
 
@@ -975,7 +975,7 @@ public GoogleMap.OnMapLongClickListener getMapLongClickListener()
 Then add to your XML
 
 ```xml
-<agency.tango.viking.bindings.map.GoogleMapView
+<net.droidlabs.viking.bindings.map.GoogleMapView
     bind:gmv_mapLongClickListener="@{viewModel.mapLongClickListener}" />
 ```
 
@@ -1000,7 +1000,7 @@ public GoogleMap.OnMyLocationButtonClickListener getMyLocationButtonClickListene
 Then add to your XML
 
 ```xml
-<agency.tango.viking.bindings.map.GoogleMapView
+<net.droidlabs.viking.bindings.map.GoogleMapView
     bind:gmv_myLocationButtonClickListener="@{viewModel.myLocationButtonClickListener}" />
 ```
 
@@ -1028,7 +1028,7 @@ To bind ```OnIndoorStateChangeListener``` you need to create a ```@Bindable``` m
 Then add to your XML
 
 ```xml
-<agency.tango.viking.bindings.map.GoogleMapView
+<net.droidlabs.viking.bindings.map.GoogleMapView
   bind:gmv_indoorStateChangeListener="@{viewModel.indoorStateChangeListener}" />
 ```
 
@@ -1051,7 +1051,7 @@ public GoogleMap.OnPoiClickListener getPoiClickListener(){
 Then add to your XML
 
 ```xml
-<agency.tango.viking.bindings.map.GoogleMapView
+<net.droidlabs.viking.bindings.map.GoogleMapView
    bind:gmv_poiClickListener="@{viewModel.poiClickListener}" />
 ```
 #### - **```gmv_snapshotReadyCallback```** Bind on snapshot ready callback.
@@ -1073,7 +1073,7 @@ Then add to your XML
 Then add to your XML
 
 ```xml
-<agency.tango.viking.bindings.map.GoogleMapView
+<net.droidlabs.viking.bindings.map.GoogleMapView
     bind:gmv_snapshotReadyCallback="@{viewModel.snapshotReadyCallback}" />
 ```
 

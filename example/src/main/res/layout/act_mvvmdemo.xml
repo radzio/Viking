@@ -5,7 +5,7 @@
 
     <variable
       name="viewModel"
-      type="agency.tango.viking.example.viewmodels.MainViewModel"/>
+      type="net.droidlabs.viking.example.viewmodels.MainViewModel"/>
 
   </data>
 
