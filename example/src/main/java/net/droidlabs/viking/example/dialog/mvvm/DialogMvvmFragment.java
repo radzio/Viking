@@ -1,6 +1,6 @@
 package net.droidlabs.viking.example.dialog.mvvm;
 
-import net.tango.viking.annotations.AutoModule;
+import net.droidlabs.viking.annotations.AutoModule;
 import net.droidlabs.viking.example.R;
 import net.droidlabs.viking.example.TestViewModel2;
 import net.droidlabs.viking.example.databinding.FragmentVikingDialogBinding;

@@ -1,4 +1,4 @@
-package net.tango.viking.annotations;
+package net.droidlabs.viking.annotations;
 
 import dagger.MapKey;
 

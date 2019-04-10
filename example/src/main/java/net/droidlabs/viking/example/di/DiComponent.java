@@ -9,15 +9,12 @@ import dagger.android.DaggerApplication;
 import dagger.android.support.AndroidSupportInjectionModule;
 import net.droidlabs.dagger.annotations.AppScope;
 
-import net.droidlabs.viking.di.ScreenMappings;
-
 @AppScope
 @Component(modules = {
     AndroidInjectionModule.class,
     AndroidSupportInjectionModule.class,
-    ScreenMappings.class,
+    //ScreenMappings.class,
     AppModule.class,
-    //ViewModelMappings.class,
     TestModule.class,
 })
 public interface DiComponent extends AndroidInjector<DaggerApplication> {

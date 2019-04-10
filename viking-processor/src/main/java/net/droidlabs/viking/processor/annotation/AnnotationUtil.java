@@ -6,7 +6,7 @@ import java.util.Map;
 import javax.lang.model.type.TypeMirror;
 
 import net.droidlabs.viking.processor.AnnotatedClass;
-import net.tango.viking.annotations.AutoModule;
+import net.droidlabs.viking.annotations.AutoModule;
 
 import static net.droidlabs.viking.processor.Util.getAnnotation;
 

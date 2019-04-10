@@ -7,7 +7,7 @@ import android.util.Log;
 
 import javax.inject.Inject;
 
-import net.tango.viking.annotations.AutoModule;
+import net.droidlabs.viking.annotations.AutoModule;
 import net.droidlabs.viking.example.databinding.ActMvvmdemoBinding;
 import net.droidlabs.viking.example.services.Navigator;
 import net.droidlabs.viking.example.viewmodels.MainViewModel;

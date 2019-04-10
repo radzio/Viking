@@ -1,6 +1,6 @@
 package net.droidlabs.viking.example
 
-import net.tango.viking.annotations.ProvidesViewModel
+import net.droidlabs.viking.annotations.ProvidesViewModel
 import net.droidlabs.viking.bindings.map.InfoWindowAdapterFactory
 import net.droidlabs.viking.bindings.map.RendererFactory
 import net.droidlabs.viking.bindings.map.adapters.CustomInfoWindowAdapter
@@ -11,8 +11,6 @@ import net.droidlabs.viking.bindings.map.models.BindableMarker
 import net.droidlabs.viking.bindings.map.models.BindableOverlay
 import net.droidlabs.viking.bindings.map.models.BindablePolygon
 import net.droidlabs.viking.bindings.map.models.BindablePolyline
-import net.droidlabs.viking.example.BR
-import net.droidlabs.viking.example.R
 import net.droidlabs.viking.mvvm.StartupAction
 import net.droidlabs.viking.mvvm.ViewModel
 import android.content.Context

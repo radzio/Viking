@@ -1,6 +1,6 @@
 package net.droidlabs.viking.example;
 
-import net.tango.viking.annotations.AutoModule;
+import net.droidlabs.viking.annotations.AutoModule;
 import net.droidlabs.viking.example.R;
 import net.droidlabs.viking.example.databinding.FragmentTestBinding;
 import net.droidlabs.viking.mvvm.FragmentView;

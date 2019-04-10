@@ -42,6 +42,8 @@ subprojects { project ->
       //classpath 'gradle.plugin.com.kageiit:lintrules:1.1.2'
       //classpath 'com.novoda:bintray-release:0.8.1'
       classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${project.kotlinVersion}"
+      classpath "org.jetbrains.dokka:dokka-android-gradle-plugin:0.9.18"
+      classpath "org.jetbrains.dokka:dokka-gradle-plugin:0.9.18"
       classpath 'me.tatarka:gradle-retrolambda:3.7.0'
       classpath 'com.dicedmelon.gradle:jacoco-android:0.1.4'
     }

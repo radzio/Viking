@@ -1,18 +1,17 @@
 package net.droidlabs.viking.example;
 
-import net.droidlabs.viking.example.R;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
+import androidx.fragment.app.FragmentManager;
 import com.google.android.gms.maps.MapView;
-import net.tango.viking.annotations.AutoModule;
-import net.tango.viking.annotations.AutoProvides;
+import net.droidlabs.viking.annotations.AutoModule;
+import net.droidlabs.viking.annotations.AutoProvides;
 import net.droidlabs.viking.example.databinding.ActivityMapBinding;
 import net.droidlabs.viking.example.dialog.mvp.VikingDialogFragment;
 import net.droidlabs.viking.example.dialog.mvvm.DialogMvvmFragment;
 import net.droidlabs.viking.example.services.Navigator;
 import net.droidlabs.viking.map.views.MapAwareActivityView;
-import androidx.fragment.app.FragmentManager;
 
 @AutoModule
 public class MapActivity extends MapAwareActivityView<MapViewModel, ActivityMapBinding> {

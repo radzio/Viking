@@ -2,6 +2,7 @@ apply plugin: 'com.android.library'
 apply plugin: "kotlin-android"
 apply plugin: 'kotlin-kapt'
 // apply plugin: 'com.novoda.bintray-release'
+apply plugin: 'org.jetbrains.dokka-android'
 apply from: '../jacoco-android.gradle'
 
 android {
@@ -23,6 +24,11 @@ android {
       proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
     }
   }
+
+  dokka {
+    outputFormat = 'html'
+    outputDirectory = "$buildDir/javadoc"
+  }
 }
 
 dependencies {
@@ -30,15 +36,15 @@ dependencies {
 
   implementation deps.kotlinStdLib
 
-  compile 'androidx.appcompat:appcompat:1.0.0-alpha3'
+  compile 'androidx.appcompat:appcompat:1.1.0-alpha04'
 
-  compile 'androidx.lifecycle:lifecycle-extensions:2.0.0-alpha1'
-  annotationProcessor 'androidx.lifecycle:lifecycle-compiler:2.0.0-alpha1'
+  compile 'androidx.lifecycle:lifecycle-extensions:2.1.0-alpha04'
+  kapt 'androidx.lifecycle:lifecycle-compiler:2.1.0-alpha04'
   compile deps.daggerAndroid
   compile (deps.daggerAndroidSupport, {
     exclude group: 'com.android.support'
   })
-  annotationProcessor deps.daggerAndroidProccesor
+  kapt deps.daggerAndroidProccesor
 
   androidTestCompile('androidx.test.espresso:espresso-core:3.1.0-alpha3', {
     exclude group: 'com.android.support', module: 'support-annotations'

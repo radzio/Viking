@@ -9,7 +9,7 @@ import javax.inject.Named;
 import javax.lang.model.element.ExecutableElement;
 
 import net.droidlabs.viking.processor.AnnotatedClass;
-import net.tango.viking.annotations.AutoProvides;
+import net.droidlabs.viking.annotations.AutoProvides;
 import net.droidlabs.viking.processor.CodeBuilder;
 import dagger.Module;
 import dagger.Provides;

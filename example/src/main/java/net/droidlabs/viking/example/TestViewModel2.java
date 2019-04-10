@@ -4,7 +4,7 @@ import android.util.Log;
 
 import javax.inject.Inject;
 
-import net.tango.viking.annotations.ProvidesViewModel;
+import net.droidlabs.viking.annotations.ProvidesViewModel;
 import net.droidlabs.viking.mvvm.ViewModel;
 
 @ProvidesViewModel

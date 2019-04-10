@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import javax.lang.model.type.TypeMirror;
-import net.tango.viking.annotations.AutoModule;
+import net.droidlabs.viking.annotations.AutoModule;
 import net.droidlabs.viking.di.ScreenComponent;
 import net.droidlabs.viking.di.ScreenComponentBuilder;
 import net.droidlabs.viking.processor.AnnotatedClass;

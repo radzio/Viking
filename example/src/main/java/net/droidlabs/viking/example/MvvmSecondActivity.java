@@ -1,6 +1,6 @@
 package net.droidlabs.viking.example;
 
-import net.tango.viking.annotations.AutoModule;
+import net.droidlabs.viking.annotations.AutoModule;
 import net.droidlabs.viking.example.R;
 import net.droidlabs.viking.example.databinding.ActMvvmdemoBinding;
 import net.droidlabs.viking.example.viewmodels.SecondViewModel;

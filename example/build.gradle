@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: "kotlin-android"
 apply plugin: 'kotlin-kapt'
+apply plugin: 'org.jetbrains.dokka-android'
 apply from: '../jacoco-android.gradle'
 
 android {
@@ -36,13 +37,18 @@ android {
     lintOptions {
         abortOnError false
     }
+
+    dokka {
+        outputFormat = 'html'
+        outputDirectory = "$buildDir/javadoc"
+    }
 }
 
 dependencies {
 
-    kapt project(":viking-processor")
+    //kapt project(":viking-processor")
 
-    //kapt "com.github.radzio.Viking:viking-processor:23b0ee818f"
+    kapt "com.github.radzio.Viking:viking-processor:a2e662db4c"
 
     implementation project(":viking-annotations")
     implementation project(":viking-di")

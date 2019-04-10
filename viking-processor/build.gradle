@@ -2,6 +2,7 @@ apply plugin: 'java'
 apply plugin: "kotlin"
 apply plugin: 'kotlin-kapt'
 // apply plugin: 'com.novoda.bintray-release'
+apply plugin: 'org.jetbrains.dokka'
 apply from: '../jacoco.gradle'
 
 //def logger = new com.android.build.gradle.internal.LoggerWrapper(project.logger)
@@ -14,6 +15,11 @@ apply from: '../jacoco.gradle'
 
 sourceCompatibility = rootProject.ext.sourceCompatibilityVersion
 targetCompatibility = rootProject.ext.targetCompatibilityVersion
+
+dokka {
+  outputFormat = 'html'
+  outputDirectory = "$buildDir/javadoc"
+}
 
 dependencies {
 

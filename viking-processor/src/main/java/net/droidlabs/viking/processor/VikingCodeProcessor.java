@@ -27,8 +27,8 @@ import net.droidlabs.viking.processor.module.ComponentCodeBuilder;
 import net.droidlabs.viking.processor.module.ModuleCodeGenerator;
 import net.droidlabs.viking.processor.module.ModuleScopedCodeGenerator;
 import net.droidlabs.viking.processor.module.ScreenMappingsBuilder;
-import net.tango.viking.annotations.AutoModule;
-import net.tango.viking.annotations.AutoProvides;
+import net.droidlabs.viking.annotations.AutoModule;
+import net.droidlabs.viking.annotations.AutoProvides;
 
 import static com.squareup.javapoet.JavaFile.builder;
 import static java.util.Collections.singleton;
