@@ -246,7 +246,7 @@ public class VikingCodeProcessorTest {
 
     JavaFileObject testActivity = JavaFileObjects.forSourceString("test.TestActivity",
         "package test;\n"
-            + "import AutoModule;\n"
+            + "import net.droidlabs.viking.annotations.AutoModule;\n"
             + "\n"
             + "@AutoModule(includes = {TestModule.class})\n"
             + "public class TestActivity {\n"
@@ -282,7 +282,7 @@ public class VikingCodeProcessorTest {
 
   private String getTestFragment() {
     return "package test;\n"
-        + "import AutoModule;\n"
+        + "import net.droidlabs.viking.annotations.AutoModule;\n"
         + "\n"
         + "@AutoModule\n"
         + "public class TestFragment {\n"
@@ -292,7 +292,7 @@ public class VikingCodeProcessorTest {
 
   private String getTestActivity() {
     return "package test;\n"
-        + "import AutoModule;\n"
+        + "import net.droidlabs.viking.annotations.AutoModule;\n"
         + "\n"
         + "@AutoModule\n"
         + "public class TestActivity {\n"
@@ -302,7 +302,7 @@ public class VikingCodeProcessorTest {
 
   private String getSecondTestActivity() {
     return "package test;\n"
-        + "import AutoModule;\n"
+        + "import net.droidlabs.viking.annotations.AutoModule;\n"
         + "\n"
         + "@AutoModule\n"
         + "public class SecondTestActivity {\n"
@@ -312,8 +312,8 @@ public class VikingCodeProcessorTest {
 
   private String getTestActivtyWithAutoProvides() {
     return "package test;\n"
-        + "import AutoModule;\n"
-        + "import AutoProvides;\n"
+        + "import net.droidlabs.viking.annotations.AutoModule;\n"
+        + "import net.droidlabs.viking.annotations.AutoProvides;\n"
         + "\n"
         + "@AutoModule\n"
         + "public class AutoProvidesActivity {\n"
@@ -326,8 +326,8 @@ public class VikingCodeProcessorTest {
 
   private String getNamedTestActivityWithAutoProvides(String namedValue) {
     return "package test;\n"
-        + "import AutoModule;\n"
-        + "import AutoProvides;\n"
+        + "import net.droidlabs.viking.annotations.AutoModule;\n"
+        + "import net.droidlabs.viking.annotations.AutoProvides;\n"
         + "import javax.inject.Named;\n"
         + "\n"
         + "@AutoModule\n"
@@ -360,7 +360,7 @@ public class VikingCodeProcessorTest {
 
     JavaFileObject checkingFragment = JavaFileObjects.forSourceString("test.CheckinsFragment",
         "package test;\n"
-            + "import AutoModule;\n"
+            + "import net.droidlabs.viking.annotations.AutoModule;\n"
             + "\n"
             + "@AutoModule\n"
             + "public class CheckinsFragment {\n"
@@ -408,7 +408,7 @@ public class VikingCodeProcessorTest {
 
     JavaFileObject checkingFragment = JavaFileObjects.forSourceString("test.CheckinsFragment",
         "package test;\n"
-            + "import AutoModule;\n"
+            + "import net.droidlabs.viking.annotations.AutoModule;\n"
             + "import test.BaseModule;\n"
             + "\n"
             + "@AutoModule(superClass = BaseModule.class)\n"

@@ -44,6 +44,10 @@ android {
     }
 }
 
+kapt {
+    generateStubs = true
+}
+
 dependencies {
 
     kapt project(":viking-processor")
