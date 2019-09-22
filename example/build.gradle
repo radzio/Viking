@@ -46,6 +46,7 @@ android {
 
 kapt {
     generateStubs = true
+    correctErrorTypes = true
 }
 
 dependencies {

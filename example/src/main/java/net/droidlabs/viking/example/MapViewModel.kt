@@ -253,6 +253,7 @@ internal constructor(context: Context,
 
                 padding = 25f
                 bounds = LatLngBounds(LatLng(51.2825839249167, 20.468222118914127), LatLng(51.661517199029426, 21.288533613085747))
+                latLng = LatLng(45.0, 45.0)
             }
         })
     }
