@@ -51,11 +51,6 @@ public class GoogleMapView<T> extends MapView {
   private static final float DEFAULT_MAP_CENTER_ZOOM = 16f;
   private static final float DEFAULT_PADDING = 25f;
 
-//  private BindableItem<LatLng> latLng;
-//  private BindableItem<Float> zoom;
-//  private BindableItem<LatLngBounds> bounds;
-//  private BindableItem<Float> padding;
-
   private BindableItem<LatLng> latLng = new BindableItem<>(value -> {
     getMapAsync(googleMap -> {
       disable();
@@ -71,10 +66,6 @@ public class GoogleMapView<T> extends MapView {
     });
   });
 
-  private Boolean zoomNotNull() {
-    return zoom() == null || zoom().getValue() == null;
-  }
-
   private BindableItem<Float> zoom = new BindableItem<>(value -> {
     getMapAsync(googleMap -> {
       disable();
@@ -89,6 +80,10 @@ public class GoogleMapView<T> extends MapView {
     });
   });
 
+
+//  private BindableItem<LatLng> latLng;
+//  private BindableItem<Float> zoom;
+//  private BindableItem<LatLngBounds> bounds;
   private BindableItem<Float> padding = new BindableItem<>();
   private BindableItem<Integer> radius = new BindableItem<>();
 
@@ -156,14 +151,14 @@ public class GoogleMapView<T> extends MapView {
     latLng.enable();
     zoom.enable();
     bounds.enable();
-    padding.enable();
+    //padding.enable();
   }
 
   public void disable() {
     latLng.disable();
     zoom.disable();
     bounds.disable();
-    padding.disable();
+    //padding.disable();
   }
 
   //region Listeners
@@ -692,6 +687,10 @@ public class GoogleMapView<T> extends MapView {
     int height = (int) SphericalUtil.computeDistanceBetween(heightTopSide, heightBottomSide);
 
     return width > height ? width : height;
+  }
+
+  private Boolean zoomNotNull() {
+    return zoom() == null || zoom().getValue() == null;
   }
 
   private int convertDpToPixel(float dp) {

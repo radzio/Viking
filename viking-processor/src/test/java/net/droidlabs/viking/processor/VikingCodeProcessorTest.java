@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableSet;
 import com.google.testing.compile.JavaFileObjects;
 import org.junit.Ignore;
 import org.junit.Test;
+
 import javax.tools.JavaFileObject;
 
 import static com.google.common.truth.Truth.assertAbout;
@@ -19,7 +20,7 @@ public class VikingCodeProcessorTest {
 
     JavaFileObject expectedScreenMappings = JavaFileObjects.forSourceString(
         "net.droidlabs.viking.di.ScreenMappings",
-        "package net.droidlabs.viking.di;\n"
+        "classPackage net.droidlabs.viking.di;\n"
             + "import dagger.Module;\n"
             + "import dagger.android.ContributesAndroidInjector;\n"
             + "import net.droidlabs.dagger.annotations.ActivityScope;\n"
@@ -56,7 +57,7 @@ public class VikingCodeProcessorTest {
     JavaFileObject testActivity = JavaFileObjects.forSourceString("test.AutoProvidesActivity",
         getTestActivtyWithAutoProvides());
     JavaFileObject expected = JavaFileObjects.forSourceString("test.AutoProvidesActivity_Module",
-        "package test;\n"
+        "classPackage test;\n"
             + "\n"
             + "import dagger.Module;\n"
             + "import dagger.Provides;\n"
@@ -83,7 +84,7 @@ public class VikingCodeProcessorTest {
     JavaFileObject testActivity = JavaFileObjects.forSourceString("test.AutoProvidesActivity",
         getNamedTestActivityWithAutoProvides("important_key"));
     JavaFileObject expected = JavaFileObjects.forSourceString("test.AutoProvidesActivity_Module",
-        "package test;\n"
+        "classPackage test;\n"
             + "\n"
             + "import dagger.Module;\n"
             + "import dagger.Provides;\n"
@@ -117,7 +118,7 @@ public class VikingCodeProcessorTest {
 
     JavaFileObject expectedActivityFragmentsModule = JavaFileObjects.forSourceString(
         "test.ActivityFragments_Module",
-        "package test;\n"
+        "classPackage test;\n"
             + "import dagger.Module;\n"
             + "import dagger.android.ContributesAndroidInjector;\n"
             + "\n"
@@ -131,7 +132,7 @@ public class VikingCodeProcessorTest {
 
     JavaFileObject expectedScreenMappings = JavaFileObjects.forSourceString(
         "net.droidlabs.viking.di.ScreenMappings",
-        "package net.droidlabs.viking.di;\n"
+        "classPackage net.droidlabs.viking.di;\n"
             + "import dagger.Module;\n"
             + "import dagger.android.ContributesAndroidInjector;\n"
             + "import net.droidlabs.dagger.annotations.ActivityScope;\n"
@@ -168,7 +169,7 @@ public class VikingCodeProcessorTest {
 
     JavaFileObject expectedActivityFragmentsModule = JavaFileObjects.forSourceString(
         "test.ActivityFragments_Module",
-        "package test;\n"
+        "classPackage test;\n"
             + "import dagger.Module;\n"
             + "import dagger.android.ContributesAndroidInjector;\n"
             + "\n"
@@ -182,7 +183,7 @@ public class VikingCodeProcessorTest {
 
     JavaFileObject expectedSecondActivityFragmentsModule = JavaFileObjects.forSourceString(
         "test.SecondActivityFragments_Module",
-        "package test;\n"
+        "classPackage test;\n"
             + "import dagger.Module;\n"
             + "import dagger.android.ContributesAndroidInjector;\n"
             + "\n"
@@ -196,7 +197,7 @@ public class VikingCodeProcessorTest {
 
     JavaFileObject expectedScreenMappings = JavaFileObjects.forSourceString(
         "net.droidlabs.viking.di.ScreenMappings",
-        "package net.droidlabs.viking.di;\n"
+        "classPackage net.droidlabs.viking.di;\n"
             + "import dagger.Module;\n"
             + "import dagger.android.ContributesAndroidInjector;\n"
             + "import net.droidlabs.dagger.annotations.ActivityScope;\n"
@@ -236,7 +237,7 @@ public class VikingCodeProcessorTest {
   @Test
   public void includesModule_generatesScreenMappingsModule() {
     JavaFileObject testModule = JavaFileObjects.forSourceString("test.TestModule",
-        "package test;\n"
+        "classPackage test;\n"
             + "import dagger.Module;\n"
             + "\n"
             + "@Module\n"
@@ -245,7 +246,7 @@ public class VikingCodeProcessorTest {
             + "}");
 
     JavaFileObject testActivity = JavaFileObjects.forSourceString("test.TestActivity",
-        "package test;\n"
+        "classPackage test;\n"
             + "import net.droidlabs.viking.annotations.AutoModule;\n"
             + "\n"
             + "@AutoModule(includes = {TestModule.class})\n"
@@ -255,7 +256,7 @@ public class VikingCodeProcessorTest {
 
     JavaFileObject expectedScreenMappings = JavaFileObjects.forSourceString(
         "net.droidlabs.viking.di.ScreenMappings",
-        "package net.droidlabs.viking.di;\n"
+        "classPackage net.droidlabs.viking.di;\n"
             + "import dagger.Module;\n"
             + "import dagger.android.ContributesAndroidInjector;\n"
             + "import net.droidlabs.dagger.annotations.ActivityScope;\n"
@@ -281,7 +282,7 @@ public class VikingCodeProcessorTest {
   }
 
   private String getTestFragment() {
-    return "package test;\n"
+    return "classPackage test;\n"
         + "import net.droidlabs.viking.annotations.AutoModule;\n"
         + "\n"
         + "@AutoModule\n"
@@ -291,7 +292,7 @@ public class VikingCodeProcessorTest {
   }
 
   private String getTestActivity() {
-    return "package test;\n"
+    return "classPackage test;\n"
         + "import net.droidlabs.viking.annotations.AutoModule;\n"
         + "\n"
         + "@AutoModule\n"
@@ -301,7 +302,7 @@ public class VikingCodeProcessorTest {
   }
 
   private String getSecondTestActivity() {
-    return "package test;\n"
+    return "classPackage test;\n"
         + "import net.droidlabs.viking.annotations.AutoModule;\n"
         + "\n"
         + "@AutoModule\n"
@@ -311,7 +312,7 @@ public class VikingCodeProcessorTest {
   }
 
   private String getTestActivtyWithAutoProvides() {
-    return "package test;\n"
+    return "classPackage test;\n"
         + "import net.droidlabs.viking.annotations.AutoModule;\n"
         + "import net.droidlabs.viking.annotations.AutoProvides;\n"
         + "\n"
@@ -325,7 +326,7 @@ public class VikingCodeProcessorTest {
   }
 
   private String getNamedTestActivityWithAutoProvides(String namedValue) {
-    return "package test;\n"
+    return "classPackage test;\n"
         + "import net.droidlabs.viking.annotations.AutoModule;\n"
         + "import net.droidlabs.viking.annotations.AutoProvides;\n"
         + "import javax.inject.Named;\n"
@@ -359,7 +360,7 @@ public class VikingCodeProcessorTest {
   public void generatesTypeAdapterFactory() {
 
     JavaFileObject checkingFragment = JavaFileObjects.forSourceString("test.CheckinsFragment",
-        "package test;\n"
+        "classPackage test;\n"
             + "import net.droidlabs.viking.annotations.AutoModule;\n"
             + "\n"
             + "@AutoModule\n"
@@ -369,9 +370,9 @@ public class VikingCodeProcessorTest {
 
     JavaFileObject expectedCheckinsFragmentModule = JavaFileObjects.forSourceString(
         "test.CheckinsFragment_Module",
-        "package test;\n"
+        "classPackage test;\n"
             + "\n"
-            + "import ScreenModule;\n"
+            + "import net.droidlabs.viking.di.ScreenModule;\n"
             + "import android.content.Context;\n"
             + "import dagger.Module;\n"
             + "import net.droidlabs.dagger.annotations.ActivityScope;\n"
@@ -397,7 +398,7 @@ public class VikingCodeProcessorTest {
   public void generatesTypeAdapterFactory2() {
 
     JavaFileObject baseModule = JavaFileObjects.forSourceString("test.BaseModule",
-        "package test;\n"
+        "classPackage test;\n"
             + "\n"
             + "public class BaseModule {\n"
             + "  public BaseModule(String a, String b) {\n"
@@ -407,7 +408,7 @@ public class VikingCodeProcessorTest {
     );
 
     JavaFileObject checkingFragment = JavaFileObjects.forSourceString("test.CheckinsFragment",
-        "package test;\n"
+        "classPackage test;\n"
             + "import net.droidlabs.viking.annotations.AutoModule;\n"
             + "import test.BaseModule;\n"
             + "\n"
@@ -418,7 +419,7 @@ public class VikingCodeProcessorTest {
 
     JavaFileObject expectedCheckinsFragmentModule = JavaFileObjects.forSourceString(
         "test.CheckinsFragment_Module",
-        "package test;\n"
+        "classPackage test;\n"
             + "\n"
             + "import dagger.Module;\n"
             + "import java.lang.String;\n"

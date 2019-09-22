@@ -26,9 +26,13 @@ dependencies {
   compile project(':viking-annotations')
   compile project(':viking-di')
 
-  compile deps.autoservice
-  compile deps.autocommon
-  compile deps.javapoet
+  kapt deps.autoservice
+  implementation deps.autoservice
+  implementation deps.autocommon
+  implementation deps.javapoet
+  implementation 'com.squareup:kotlinpoet:1.3.0'
+  implementation 'com.squareup:kotlinpoet:1.3.0'
+  implementation 'org.jetbrains.kotlin:kotlin-reflect:1.3.50'
 
   compileOnly deps.guava
 

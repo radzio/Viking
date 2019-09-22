@@ -80,9 +80,9 @@ abstract class ActivityView<VM : ViewModel, VD : ViewDataBinding>(
         }
     }
 
-    protected fun binding(): VD? {
+    protected fun binding(): VD {
         return binding
     }
 
-    protected abstract fun bind(binding: VD?)
+    protected abstract fun bind(binding: VD)
 }

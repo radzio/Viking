@@ -72,7 +72,7 @@ ext {
   targetCompatibilityVersion = JavaVersion.VERSION_1_8
 }
 
-def androidToolsVersion = '27.0.3'
+def androidToolsVersion = '27.0.2'
 def supportLibraryVersion = '27.0.2'
 def googlePlayServicesVersion = '17.0.0'
 
