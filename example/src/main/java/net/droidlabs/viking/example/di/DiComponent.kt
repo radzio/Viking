@@ -8,13 +8,12 @@ import dagger.android.AndroidInjector
 import dagger.android.DaggerApplication
 import dagger.android.support.AndroidSupportInjectionModule
 import net.droidlabs.dagger.annotations.AppScope
-import net.droidlabs.viking.di.ScreenMappings
 
 @AppScope
 @Component(modules = [
     AndroidInjectionModule::class,
     AndroidSupportInjectionModule::class,
-    ScreenMappings::class,
+    net.droidlabs.viking.di.ScreenMappings::class,
     AppModule::class,
     TestModule::class]
 )
