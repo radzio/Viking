@@ -46,9 +46,9 @@ android {
 
 dependencies {
 
-    //kapt project(":viking-processor")
+    kapt project(":viking-processor")
 
-    kapt "com.github.radzio.Viking:viking-processor:a2e662db4c"
+    //kapt "com.github.radzio.Viking:viking-processor:9c4e970a55"
 
     implementation project(":viking-annotations")
     implementation project(":viking-di")

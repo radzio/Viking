@@ -15,9 +15,12 @@ import com.google.maps.android.clustering.ClusterItem;
 import com.google.maps.android.clustering.ClusterManager;
 import com.google.maps.android.clustering.algo.Algorithm;
 import com.google.maps.android.heatmaps.HeatmapTileProvider;
-import java.util.Collection;
-
+import net.droidlabs.viking.bindings.map.adapters.ClusterItemWindowInfoAdapter;
+import net.droidlabs.viking.bindings.map.adapters.ClusterWindowInfoAdapter;
+import net.droidlabs.viking.bindings.map.adapters.CompositeInfoWindowAdapter;
+import net.droidlabs.viking.bindings.map.adapters.MarkerInfoWindowAdapter;
 import net.droidlabs.viking.bindings.map.listeners.CircleClickListener;
+import net.droidlabs.viking.bindings.map.listeners.CompositeInfoWindowClickListener;
 import net.droidlabs.viking.bindings.map.listeners.CompositeMarkerClickListener;
 import net.droidlabs.viking.bindings.map.listeners.CompositeOnCameraIdleListener;
 import net.droidlabs.viking.bindings.map.listeners.ItemClickListener;
@@ -25,6 +28,9 @@ import net.droidlabs.viking.bindings.map.listeners.MarkerClickListener;
 import net.droidlabs.viking.bindings.map.listeners.MarkerDragListener;
 import net.droidlabs.viking.bindings.map.listeners.OnMarkerClickListener;
 import net.droidlabs.viking.bindings.map.listeners.OverlayClickListener;
+import net.droidlabs.viking.bindings.map.listeners.PolygonClickListener;
+import net.droidlabs.viking.bindings.map.listeners.PolylineClickListener;
+import net.droidlabs.viking.bindings.map.listeners.WindowInfoClickListener;
 import net.droidlabs.viking.bindings.map.managers.CircleManager;
 import net.droidlabs.viking.bindings.map.managers.ClusterItemManager;
 import net.droidlabs.viking.bindings.map.managers.CustomClusterManager;
@@ -32,29 +38,58 @@ import net.droidlabs.viking.bindings.map.managers.MarkerManager;
 import net.droidlabs.viking.bindings.map.managers.OverlayManager;
 import net.droidlabs.viking.bindings.map.managers.PolygonManager;
 import net.droidlabs.viking.bindings.map.managers.PolylineManager;
+import net.droidlabs.viking.bindings.map.models.BindableCircle;
 import net.droidlabs.viking.bindings.map.models.BindableItem;
 import net.droidlabs.viking.bindings.map.models.BindableMarker;
+import net.droidlabs.viking.bindings.map.models.BindableOverlay;
 import net.droidlabs.viking.bindings.map.models.BindablePolygon;
 import net.droidlabs.viking.bindings.map.models.BindablePolyline;
-import net.droidlabs.viking.bindings.map.adapters.ClusterItemWindowInfoAdapter;
-import net.droidlabs.viking.bindings.map.adapters.ClusterWindowInfoAdapter;
-import net.droidlabs.viking.bindings.map.adapters.CompositeInfoWindowAdapter;
-import net.droidlabs.viking.bindings.map.adapters.MarkerInfoWindowAdapter;
-import net.droidlabs.viking.bindings.map.listeners.CompositeInfoWindowClickListener;
-import net.droidlabs.viking.bindings.map.listeners.PolygonClickListener;
-import net.droidlabs.viking.bindings.map.listeners.PolylineClickListener;
-import net.droidlabs.viking.bindings.map.listeners.WindowInfoClickListener;
-import net.droidlabs.viking.bindings.map.models.BindableCircle;
-import net.droidlabs.viking.bindings.map.models.BindableOverlay;
+
+import java.util.Collection;
 
 public class GoogleMapView<T> extends MapView {
   private static final float DEFAULT_MAP_CENTER_ZOOM = 16f;
   private static final float DEFAULT_PADDING = 25f;
 
-  private BindableItem<LatLng> latLng;
-  private BindableItem<Float> zoom;
-  private BindableItem<LatLngBounds> bounds;
-  private BindableItem<Float> padding;
+//  private BindableItem<LatLng> latLng;
+//  private BindableItem<Float> zoom;
+//  private BindableItem<LatLngBounds> bounds;
+//  private BindableItem<Float> padding;
+
+  private BindableItem<LatLng> latLng = new BindableItem<>(value -> {
+    getMapAsync(googleMap -> {
+      disable();
+
+      float mapCenterZoom;
+      if (zoomNotNull()) {
+        mapCenterZoom = DEFAULT_MAP_CENTER_ZOOM;
+      } else {
+        mapCenterZoom = zoom().getValue();
+      }
+
+      googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(value, mapCenterZoom));
+    });
+  });
+
+  private Boolean zoomNotNull() {
+    return zoom() == null || zoom().getValue() == null;
+  }
+
+  private BindableItem<Float> zoom = new BindableItem<>(value -> {
+    getMapAsync(googleMap -> {
+      disable();
+      googleMap.moveCamera(CameraUpdateFactory.zoomTo(value));
+    });
+  });
+
+  private BindableItem<LatLngBounds> bounds = new BindableItem<>(value -> {
+    getMapAsync(googleMap -> {
+      disable();
+      googleMap.animateCamera(CameraUpdateFactory.newLatLngBounds(value, 0));
+    });
+  });
+
+  private BindableItem<Float> padding = new BindableItem<>();
   private BindableItem<Integer> radius = new BindableItem<>();
 
   private MarkerManager<T> markerManager;
@@ -573,38 +608,38 @@ public class GoogleMapView<T> extends MapView {
   }
 
   private void initializeBindableItems() {
-    bounds = new BindableItem<>(value -> getMapAsync(googleMap -> {
-//      disable();
-//      float finalPadding = padding.getValue() != null ? padding.getValue() : DEFAULT_PADDING;
-//      googleMap.animateCamera(CameraUpdateFactory.newLatLngBounds(value, getWidth(), getHeight(),
-//          convertDpToPixel(finalPadding)));
-    }));
-
-    padding = new BindableItem<>(value -> getMapAsync(googleMap -> {
-//      disable();
-//      if (bounds.getValue() != null) {
-//        googleMap.animateCamera(CameraUpdateFactory.newLatLngBounds(bounds.getValue(), getWidth(),
-//            getHeight(), convertDpToPixel(value)));
-//      }
-    }));
-
-    zoom = new BindableItem<>(value -> getMapAsync(googleMap -> {
-      disable();
-      googleMap.moveCamera(CameraUpdateFactory.zoomTo(value));
-    }));
-
-    latLng = new BindableItem<>(value -> getMapAsync(googleMap -> {
-      disable();
+//    bounds = new BindableItem<>(value -> getMapAsync(googleMap -> {
+////      disable();
+////      float finalPadding = padding.getValue() != null ? padding.getValue() : DEFAULT_PADDING;
+////      googleMap.animateCamera(CameraUpdateFactory.newLatLngBounds(value, getWidth(), getHeight(),
+////          convertDpToPixel(finalPadding)));
+//    }));
 //
-//      float mapCenterZoom;
-//      if (zoom() != null) {
-//        mapCenterZoom = DEFAULT_MAP_CENTER_ZOOM;
-//      } else {
-//        mapCenterZoom = zoom().getValue();
-//      }
-
-      googleMap.moveCamera(CameraUpdateFactory.newLatLng(value));
-    }));
+//    padding = new BindableItem<>(value -> getMapAsync(googleMap -> {
+////      disable();
+////      if (bounds.getValue() != null) {
+////        googleMap.animateCamera(CameraUpdateFactory.newLatLngBounds(bounds.getValue(), getWidth(),
+////            getHeight(), convertDpToPixel(value)));
+////      }
+//    }));
+//
+//    zoom = new BindableItem<>(value -> getMapAsync(googleMap -> {
+//      disable();
+//      googleMap.moveCamera(CameraUpdateFactory.zoomTo(value));
+//    }));
+//
+//    latLng = new BindableItem<>(value -> getMapAsync(googleMap -> {
+//      disable();
+////
+////      float mapCenterZoom;
+////      if (zoom() != null) {
+////        mapCenterZoom = DEFAULT_MAP_CENTER_ZOOM;
+////      } else {
+////        mapCenterZoom = zoom().getValue();
+////      }
+//
+//      googleMap.moveCamera(CameraUpdateFactory.newLatLng(value));
+//    }));
   }
 
   private void initializeManagers() {

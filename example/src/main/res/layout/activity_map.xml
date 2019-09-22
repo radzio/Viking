@@ -4,7 +4,6 @@
         xmlns:tools="http://schemas.android.com/tools"
   >
   <data>
-    <import type="java.lang.String"/>
     <variable
       name="viewModel"
       type="net.droidlabs.viking.example.MapViewModel"
@@ -53,7 +52,7 @@
       android:layout_width="match_parent"
       android:layout_height="48dp"
       android:gravity="center"
-        android:text="@{viewModel.location}"
+      android:text="@{viewModel.location}"
       tools:text="Location: 15.2015, 51.2012"
       />
 

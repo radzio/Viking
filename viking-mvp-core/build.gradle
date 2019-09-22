@@ -5,13 +5,13 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'org.jetbrains.dokka-android'
 apply from: '../jacoco.gradle'
 
-def logger = new com.android.build.gradle.internal.LoggerWrapper(project.logger)
-def sdkHandler = new com.android.build.gradle.internal.SdkHandler(project, logger)
-for (File file : sdkHandler.sdkLoader.repositories) {
-  repositories.maven {
-    url = file.toURI()
-  }
-}
+//def logger = new com.android.build.gradle.internal.LoggerWrapper(project.logger)
+//def sdkHandler = new com.android.build.gradle.internal.SdkHandler(project, logger)
+//for (File file : sdkHandler.sdkLoader.repositories) {
+//  repositories.maven {
+//    url = file.toURI()
+//  }
+//}
 
 sourceCompatibility = rootProject.ext.sourceCompatibilityVersion
 targetCompatibility = rootProject.ext.targetCompatibilityVersion

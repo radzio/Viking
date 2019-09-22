@@ -2,7 +2,6 @@ package net.droidlabs.viking.processor;
 
 import com.google.common.collect.ImmutableSet;
 import com.google.testing.compile.JavaFileObjects;
-import net.droidlabs.viking.processor.VikingCodeProcessor;
 import org.junit.Ignore;
 import org.junit.Test;
 import javax.tools.JavaFileObject;

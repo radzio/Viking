@@ -8,26 +8,29 @@ import dagger.android.AndroidInjector;
 import dagger.android.DaggerApplication;
 import dagger.android.support.AndroidSupportInjectionModule;
 import net.droidlabs.dagger.annotations.AppScope;
+import net.droidlabs.viking.di.ScreenMappings;
 
 @AppScope
 @Component(modules = {
-    AndroidInjectionModule.class,
-    AndroidSupportInjectionModule.class,
-    //ScreenMappings.class,
-    AppModule.class,
-    TestModule.class,
+        AndroidInjectionModule.class,
+        AndroidSupportInjectionModule.class,
+        ScreenMappings.class,
+        AppModule.class,
+        TestModule.class,
 })
-public interface DiComponent extends AndroidInjector<DaggerApplication> {
+public interface DiComponent extends AndroidInjector<DaggerApplication>
+{
 
-  @Override
-  void inject(DaggerApplication instance);
+    @Override
+    void inject(DaggerApplication instance);
 
-  @Component.Builder
-  interface Builder {
+    @Component.Builder
+    interface Builder
+    {
 
-    @BindsInstance
-    DiComponent.Builder application(Application application);
+        @BindsInstance
+        DiComponent.Builder application(Application application);
 
-    DiComponent build();
-  }
+        DiComponent build();
+    }
 }

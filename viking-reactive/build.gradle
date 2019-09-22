@@ -38,7 +38,7 @@ dependencies {
   provided project(":viking-mvp")
 
   provided deps.dagger
-  annotationProcessor deps.daggerCompiler
+  kapt deps.daggerCompiler
 
   compile deps.rxJava
   compile deps.rxAndroid

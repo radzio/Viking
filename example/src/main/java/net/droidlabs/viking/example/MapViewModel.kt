@@ -1,18 +1,5 @@
 package net.droidlabs.viking.example
 
-import net.droidlabs.viking.annotations.ProvidesViewModel
-import net.droidlabs.viking.bindings.map.InfoWindowAdapterFactory
-import net.droidlabs.viking.bindings.map.RendererFactory
-import net.droidlabs.viking.bindings.map.adapters.CustomInfoWindowAdapter
-import net.droidlabs.viking.bindings.map.listeners.ItemClickListener
-import net.droidlabs.viking.bindings.map.listeners.OnMarkerClickListener
-import net.droidlabs.viking.bindings.map.models.BindableCircle
-import net.droidlabs.viking.bindings.map.models.BindableMarker
-import net.droidlabs.viking.bindings.map.models.BindableOverlay
-import net.droidlabs.viking.bindings.map.models.BindablePolygon
-import net.droidlabs.viking.bindings.map.models.BindablePolyline
-import net.droidlabs.viking.mvvm.StartupAction
-import net.droidlabs.viking.mvvm.ViewModel
 import android.content.Context
 import android.graphics.Color
 import android.util.Log
@@ -35,6 +22,19 @@ import com.google.maps.android.clustering.ClusterItem
 import com.google.maps.android.clustering.ClusterManager
 import com.google.maps.android.clustering.algo.StaticCluster
 import com.google.maps.android.heatmaps.HeatmapTileProvider
+import net.droidlabs.viking.annotations.ProvidesViewModel
+import net.droidlabs.viking.bindings.map.InfoWindowAdapterFactory
+import net.droidlabs.viking.bindings.map.RendererFactory
+import net.droidlabs.viking.bindings.map.adapters.CustomInfoWindowAdapter
+import net.droidlabs.viking.bindings.map.listeners.ItemClickListener
+import net.droidlabs.viking.bindings.map.listeners.OnMarkerClickListener
+import net.droidlabs.viking.bindings.map.models.BindableCircle
+import net.droidlabs.viking.bindings.map.models.BindableMarker
+import net.droidlabs.viking.bindings.map.models.BindableOverlay
+import net.droidlabs.viking.bindings.map.models.BindablePolygon
+import net.droidlabs.viking.bindings.map.models.BindablePolyline
+import net.droidlabs.viking.mvvm.StartupAction
+import net.droidlabs.viking.mvvm.ViewModel
 import java.util.*
 import javax.inject.Inject
 import javax.inject.Named
@@ -70,8 +70,9 @@ internal constructor(context: Context,
 
     // we need <LatLng?> because of https://youtrack.jetbrains.com/issue/KT-10930
     @get:Bindable
-    var latLng: LatLng? by observable<LatLng?>(null, BR.latLng) {
+    var latLng: LatLng by observable<LatLng>(LatLng(45.0,45.0), BR.latLng) {
         Log.d("Changed", it.toString())
+        notifyPropertyChanged(BR.location)
     }
 
     @get:Bindable
@@ -82,7 +83,7 @@ internal constructor(context: Context,
 
     @get:Bindable
     var zoom: Float by observable(0F, BR.zoom) {
-        Log.d("Changed", it.toString())
+        Log.d("Changed zoom", it.toString())
     }
 
     @get:Bindable("latLng")
