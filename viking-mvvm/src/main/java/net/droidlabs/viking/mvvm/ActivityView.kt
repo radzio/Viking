@@ -15,7 +15,6 @@ abstract class ActivityView<VM : ViewModel, VD : ViewDataBinding>(
         private val viewModelClass: Class<VM>
 ) : DaggerAppCompatActivity() {
 
-
     private lateinit var viewModel: VM
     private lateinit var binding: VD
     private lateinit var viewModelDelegate: ViewModelDelegate<VM>
@@ -80,9 +79,9 @@ abstract class ActivityView<VM : ViewModel, VD : ViewDataBinding>(
         }
     }
 
-    protected fun binding(): VD? {
+    protected fun binding(): VD {
         return binding
     }
 
-    protected abstract fun bind(binding: VD?)
+    protected abstract fun bind(binding: VD)
 }

@@ -23,12 +23,13 @@ dokka {
 
 dependencies {
 
-  compile project(':viking-annotations')
-  compile project(':viking-di')
+  implementation project(':viking-annotations')
+  implementation project(':viking-di')
 
-  compile deps.autoservice
-  compile deps.autocommon
-  compile deps.javapoet
+  implementation deps.autoservice
+  kapt deps.autoservice
+  implementation deps.autocommon
+  implementation deps.javapoet
 
   compileOnly deps.guava
 
@@ -42,14 +43,14 @@ dependencies {
 
   compileOnly files(org.gradle.internal.jvm.Jvm.current().getToolsJar())
 
-  testCompile 'com.google.testing.compile:compile-testing:0.9'
-  testCompile files(org.gradle.internal.jvm.Jvm.current().getToolsJar())
-  testCompile deps.junit
-  testCompile deps.truth
+  testImplementation 'com.google.testing.compile:compile-testing:0.9'
+  testImplementation files(org.gradle.internal.jvm.Jvm.current().getToolsJar())
+  testImplementation deps.junit
+  testImplementation deps.truth
 
-  testCompile deps.dagger
-  testCompile deps.daggerAndroidProccesor
-  testCompile deps.android
+  testImplementation deps.dagger
+  testImplementation deps.daggerAndroidProccesor
+  testImplementation deps.android
 }
 
 //publish {
