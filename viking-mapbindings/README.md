@@ -1163,20 +1163,20 @@ Thanks in advance.
 
 [Android Data Binding]: <https://developer.android.com/topic/libraries/data-binding/index.html>
 [Android Data Binding Setup]: <https://developer.android.com/topic/libraries/data-binding/index.html#build_environment>
-[issue]: <https://github.com/TangoAgency/Viking/issues/new>
-[MapAwareActivityView]: <https://github.com/TangoAgency/Viking/blob/feature/map-bindings/viking-map-aware-views/src/main/java/net/droidlabs/vikingmap/views/MapAwareActivityView.java>
-[MapAwareFragmentView]: <https://github.com/TangoAgency/Viking/blob/feature/map-bindings/viking-map-aware-views/src/main/java/net/droidlabs/vikingmap/views/MapAwareFragmentView.java>
-[Camera Bindings]: <https://github.com/TangoAgency/Viking/blob/feature/map-bindings/viking-mapbindings/src/main/java/agency/tango/viking/bindings/map/bindings/CameraBindings.java>
-[Circle Bindings]: <https://github.com/TangoAgency/Viking/blob/feature/map-bindings/viking-mapbindings/src/main/java/agency/tango/viking/bindings/map/bindings/CircleBindings.java>
-[Cluster Bindings]: <https://github.com/TangoAgency/Viking/blob/feature/map-bindings/viking-mapbindings/src/main/java/agency/tango/viking/bindings/map/bindings/ClusterBindings.java>
-[Map Bindings]: <https://github.com/TangoAgency/Viking/blob/feature/map-bindings/viking-mapbindings/src/main/java/agency/tango/viking/bindings/map/bindings/MapBindings.java>
-[Markers Bindings]: <https://github.com/TangoAgency/Viking/blob/feature/map-bindings/viking-mapbindings/src/main/java/agency/tango/viking/bindings/map/bindings/MarkerBindings.java>
-[Overlays Bindings]: <https://github.com/TangoAgency/Viking/blob/feature/map-bindings/viking-mapbindings/src/main/java/agency/tango/viking/bindings/map/bindings/OverlaysBindings.java>
-[Polygons Bindings]: <https://github.com/TangoAgency/Viking/blob/feature/map-bindings/viking-mapbindings/src/main/java/agency/tango/viking/bindings/map/bindings/PolygonBindings.java>
-[Polyline Bindings]: <https://github.com/TangoAgency/Viking/blob/feature/map-bindings/viking-mapbindings/src/main/java/agency/tango/viking/bindings/map/bindings/PolylineBindings.java>
-[xml]: <https://github.com/TangoAgency/Viking/blob/feature/map-bindings/example/src/main/res/layout/activity_map.xml>
-[GoogleMapView]: <https://github.com/TangoAgency/Viking/blob/feature/map-bindings/viking-mapbindings/src/main/java/agency/tango/viking/bindings/map/GoogleMapView.java>
-[MapViewModel]: <https://github.com/TangoAgency/Viking/blob/feature/map-bindings/example/src/main/java/agency/tango/viking/example/MapViewModel.java>
-[MapActivity]: <https://github.com/TangoAgency/Viking/blob/feature/map-bindings/example/src/main/java/agency/tango/viking/example/MapActivity.java>
-[activity_map.xml]: <https://github.com/TangoAgency/Viking/blob/feature/map-bindings/example/src/main/res/layout/activity_map.xml>
-[Viking ViewModel]: <https://github.com/TangoAgency/Viking/tree/master/viking-viewmodel>
+[issue]: <https://github.com/radzio/Viking/issues/new>
+[MapAwareActivityView]: <https://github.com/radzio/Viking/blob/feature/map-bindings/viking-map-aware-views/src/main/java/net/droidlabs/vikingmap/views/MapAwareActivityView.java>
+[MapAwareFragmentView]: <https://github.com/radzio/Viking/blob/feature/map-bindings/viking-map-aware-views/src/main/java/net/droidlabs/vikingmap/views/MapAwareFragmentView.java>
+[Camera Bindings]: <https://github.com/radzio/Viking/blob/feature/map-bindings/viking-mapbindings/src/main/java/agency/tango/viking/bindings/map/bindings/CameraBindings.java>
+[Circle Bindings]: <https://github.com/radzio/Viking/blob/feature/map-bindings/viking-mapbindings/src/main/java/agency/tango/viking/bindings/map/bindings/CircleBindings.java>
+[Cluster Bindings]: <https://github.com/radzio/Viking/blob/feature/map-bindings/viking-mapbindings/src/main/java/agency/tango/viking/bindings/map/bindings/ClusterBindings.java>
+[Map Bindings]: <https://github.com/radzio/Viking/blob/feature/map-bindings/viking-mapbindings/src/main/java/agency/tango/viking/bindings/map/bindings/MapBindings.java>
+[Markers Bindings]: <https://github.com/radzio/Viking/blob/feature/map-bindings/viking-mapbindings/src/main/java/agency/tango/viking/bindings/map/bindings/MarkerBindings.java>
+[Overlays Bindings]: <https://github.com/radzio/Viking/blob/feature/map-bindings/viking-mapbindings/src/main/java/agency/tango/viking/bindings/map/bindings/OverlaysBindings.java>
+[Polygons Bindings]: <https://github.com/radzio/Viking/blob/feature/map-bindings/viking-mapbindings/src/main/java/agency/tango/viking/bindings/map/bindings/PolygonBindings.java>
+[Polyline Bindings]: <https://github.com/radzio/Viking/blob/feature/map-bindings/viking-mapbindings/src/main/java/agency/tango/viking/bindings/map/bindings/PolylineBindings.java>
+[xml]: <https://github.com/radzio/Viking/blob/feature/map-bindings/example/src/main/res/layout/activity_map.xml>
+[GoogleMapView]: <https://github.com/radzio/Viking/blob/feature/map-bindings/viking-mapbindings/src/main/java/agency/tango/viking/bindings/map/GoogleMapView.java>
+[MapViewModel]: <https://github.com/radzio/Viking/blob/feature/map-bindings/example/src/main/java/agency/tango/viking/example/MapViewModel.java>
+[MapActivity]: <https://github.com/radzio/Viking/blob/feature/map-bindings/example/src/main/java/agency/tango/viking/example/MapActivity.java>
+[activity_map.xml]: <https://github.com/radzio/Viking/blob/feature/map-bindings/example/src/main/res/layout/activity_map.xml>
+[Viking ViewModel]: <https://github.com/radzio/Viking/tree/master/viking-viewmodel>

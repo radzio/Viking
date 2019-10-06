@@ -1,7 +1,7 @@
 apply plugin: 'java'
 apply plugin: "kotlin"
 apply plugin: 'kotlin-kapt'
-// apply plugin: 'com.novoda.bintray-release'
+apply plugin: 'com.novoda.bintray-release'
 apply plugin: 'org.jetbrains.dokka'
 apply from: '../jacoco.gradle'
 
@@ -53,13 +53,13 @@ dependencies {
   testImplementation deps.android
 }
 
-//publish {
-//  userOrg = 'tangoagency'
-//  groupId = 'net.droidlabsandroid.viking'
-//  artifactId = 'viking-processor'
-//  publishVersion = '0.0.1'
-//  desc = ''
-//  website = 'https://github.com/TangoAgency/Viking'
-//}
+publish {
+  userOrg = 'radzio'
+  groupId = 'net.droidlabs.android.viking'
+  artifactId = 'viking-processor'
+  publishVersion = '0.0.1'
+  desc = ''
+  website = 'https://github.com/radzio/Viking'
+}
 
 apply from: rootProject.file('gradle/gradle-mvn-push.gradle')

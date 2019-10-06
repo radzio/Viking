@@ -1,7 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: "kotlin-android"
 apply plugin: 'kotlin-kapt'
-// apply plugin: 'com.novoda.bintray-release'
+apply plugin: 'com.novoda.bintray-release'
 apply plugin: 'org.jetbrains.dokka-android'
 apply from: '../jacoco-android.gradle'
 
@@ -52,19 +52,19 @@ dependencies {
   testCompile deps.junit
   testCompile deps.mockito
   testCompile deps.truth
-  testCompile deps.robolectric;
+  testCompile deps.robolectric
 
   testCompile project(":viking-mvvm")
   testCompile project(":viking-mvp")
 }
 
-//publish {
-//  userOrg = 'tangoagency'
-//  groupId = 'net.droidlabsandroid.viking'
-//  artifactId = 'viking-reactive'
-//  publishVersion = '0.0.1'
-//  desc = ''
-//  website = 'https://github.com/TangoAgency/Viking'
-//}
+publish {
+  userOrg = 'radzio'
+  groupId = 'net.droidlabs.android.viking'
+  artifactId = 'viking-reactive'
+  publishVersion = '0.0.1'
+  desc = ''
+  website = 'https://github.com/radzio/Viking'
+}
 
 apply from: rootProject.file('gradle/gradle-mvn-push.gradle')

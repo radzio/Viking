@@ -1,5 +1,5 @@
 apply plugin: 'java'
-// apply plugin: 'com.novoda.bintray-release'
+apply plugin: 'com.novoda.bintray-release'
 apply plugin: 'org.jetbrains.dokka'
 apply from: '../jacoco.gradle'
 
@@ -26,14 +26,14 @@ dependencies {
     compileOnly 'com.github.radzio:architecture-compontents:67c48bbc85'
 }
 
-//publish {
-//    userOrg = 'tangoagency'
-//    groupId = 'net.droidlabsandroid.viking'
-//    artifactId = 'viking-annotations'
-//    publishVersion = '0.0.1'
-//    desc = ''
-//    website = 'https://github.com/TangoAgency/Viking'
-//}
+publish {
+    userOrg = 'radzio'
+    groupId = 'net.droidlabs.android.viking'
+    artifactId = 'viking-annotations'
+    publishVersion = '0.0.1'
+    desc = ''
+    website = 'https://github.com/radzio/Viking'
+}
 
 
 apply from: rootProject.file('gradle/gradle-mvn-push.gradle')
