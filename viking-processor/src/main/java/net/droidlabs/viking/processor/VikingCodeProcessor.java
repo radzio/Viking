@@ -7,8 +7,17 @@ import com.google.common.collect.ListMultimap;
 import com.google.common.collect.MultimapBuilder;
 import com.squareup.javapoet.JavaFile;
 import com.squareup.javapoet.TypeSpec;
+import net.droidlabs.viking.annotations.AutoModule;
+import net.droidlabs.viking.annotations.AutoProvides;
+import net.droidlabs.viking.processor.annotation.AnnotationUtil;
+import net.droidlabs.viking.processor.module.ComponentCodeBuilder;
+import net.droidlabs.viking.processor.module.ModuleCodeGenerator;
+import net.droidlabs.viking.processor.module.ModuleScopedCodeGenerator;
+import net.droidlabs.viking.processor.module.ScreenMappingsBuilder;
+import net.ltgt.gradle.incap.IncrementalAnnotationProcessor;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 import javax.annotation.processing.AbstractProcessor;
@@ -22,19 +31,13 @@ import javax.lang.model.element.ExecutableElement;
 import javax.lang.model.element.TypeElement;
 import javax.lang.model.type.TypeMirror;
 
-import net.droidlabs.viking.processor.annotation.AnnotationUtil;
-import net.droidlabs.viking.processor.module.ComponentCodeBuilder;
-import net.droidlabs.viking.processor.module.ModuleCodeGenerator;
-import net.droidlabs.viking.processor.module.ModuleScopedCodeGenerator;
-import net.droidlabs.viking.processor.module.ScreenMappingsBuilder;
-import net.droidlabs.viking.annotations.AutoModule;
-import net.droidlabs.viking.annotations.AutoProvides;
-
 import static com.squareup.javapoet.JavaFile.builder;
 import static java.util.Collections.singleton;
 import static javax.lang.model.SourceVersion.latestSupported;
 import static javax.tools.Diagnostic.Kind.ERROR;
+import static net.ltgt.gradle.incap.IncrementalAnnotationProcessorType.ISOLATING;
 
+@IncrementalAnnotationProcessor(ISOLATING)
 @AutoService(Processor.class)
 public class VikingCodeProcessor extends AbstractProcessor {
   private static final String ANNOTATION = "@" + AutoModule.class.getSimpleName();
@@ -48,6 +51,11 @@ public class VikingCodeProcessor extends AbstractProcessor {
     super.init(processingEnv);
     processingEnvironment = processingEnv;
     messager = processingEnv.getMessager();
+  }
+
+  @Override
+  public Set<String> getSupportedOptions() {
+      return Collections.singleton(ISOLATING.getProcessorOption());
   }
 
   @Override
