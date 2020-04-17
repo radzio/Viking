@@ -2,6 +2,7 @@ package net.droidlabs.viking.mvvm
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.annotation.IdRes
 import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
@@ -38,12 +39,24 @@ abstract class ActivityView<VM : ViewModel, VD : ViewDataBinding>(
 
     public override fun onResume() {
         super.onResume()
+        Log.d("TAG", "onResume")
         viewModelDelegate.onStart()
     }
 
     public override fun onPause() {
         super.onPause()
+        Log.d("TAG", "onPause")
         viewModelDelegate.onStop()
+    }
+
+    public override fun onStart() {
+        super.onStart()
+        Log.d("TAG", "onStart")
+    }
+
+    public override fun onStop() {
+        super.onStop()
+        Log.d("TAG", "onStop")
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

@@ -22,7 +22,6 @@ import com.google.maps.android.clustering.ClusterItem
 import com.google.maps.android.clustering.ClusterManager
 import com.google.maps.android.clustering.algo.StaticCluster
 import com.google.maps.android.heatmaps.HeatmapTileProvider
-import net.droidlabs.viking.annotations.ProvidesViewModel
 import net.droidlabs.viking.bindings.map.InfoWindowAdapterFactory
 import net.droidlabs.viking.bindings.map.RendererFactory
 import net.droidlabs.viking.bindings.map.adapters.CustomInfoWindowAdapter
@@ -39,7 +38,6 @@ import java.util.*
 import javax.inject.Inject
 import javax.inject.Named
 
-@ProvidesViewModel
 class MapViewModel @Inject
 internal constructor(context: Context,
                      @Named("test_string") test: String,

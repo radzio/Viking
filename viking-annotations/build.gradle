@@ -1,18 +1,9 @@
+import net.droidlabs.viking.gradle.Deps
+
 apply plugin: 'java'
 apply plugin: 'com.novoda.bintray-release'
 apply plugin: 'org.jetbrains.dokka'
 apply from: '../jacoco.gradle'
-
-//def logger = new com.android.build.gradle.internal.LoggerWrapper(project.logger)
-//def sdkHandler = new com.android.build.gradle.internal.SdkHandler(project, logger)
-//for (File file : sdkHandler.sdkLoader.repositories) {
-//    repositories.maven {
-//        url = file.toURI()
-//    }
-//}
-
-sourceCompatibility = rootProject.ext.sourceCompatibilityVersion
-targetCompatibility = rootProject.ext.targetCompatibilityVersion
 
 dokka {
     outputFormat = 'html'
@@ -21,8 +12,8 @@ dokka {
 
 dependencies {
 
-    compileOnly deps.android
-    compileOnly deps.dagger
+    compileOnly Deps.android
+    compileOnly Deps.dagger
     compileOnly 'com.github.radzio:architecture-compontents:67c48bbc85'
 }
 

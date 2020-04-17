@@ -3,6 +3,7 @@ package net.droidlabs.viking.mvvm
 import android.app.Activity.RESULT_OK
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.util.SparseArray
 import androidx.annotation.CallSuper
 import androidx.databinding.BaseObservable
@@ -30,6 +31,7 @@ abstract class ViewModel(
 
     @CallSuper
     open fun start() {
+        Log.d("TAG", "start")
         if (isFirstRun) {
             for (action in startupActions) {
                 action.execute()
@@ -64,6 +66,13 @@ abstract class ViewModel(
     @CallSuper
     fun onResult(requestCode: Int, resultCode: Int, data: Intent?) {
         executeOnResultActions(requestCode, data, resultCode == RESULT_OK)
+    }
+
+    class SsijContext()
+
+    @CallSuper
+    open fun ssij(block: SsijContext.() -> Unit ) {
+        block(SsijContext())
     }
 
     @CallSuper

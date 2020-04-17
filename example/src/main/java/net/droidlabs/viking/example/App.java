@@ -1,10 +1,11 @@
 package net.droidlabs.viking.example;
 
-import net.droidlabs.viking.example.di.DaggerDiComponent;
 import android.content.Context;
-import androidx.multidex.MultiDex;
+import net.droidlabs.viking.example.di.DaggerDiComponent;
 import dagger.android.AndroidInjector;
 import dagger.android.DaggerApplication;
+
+//import androidx.multidex.MultiDex;
 
 //import net.droidlabs.viking.example.di.DaggerDiComponent;
 
@@ -24,7 +25,7 @@ public class App extends DaggerApplication {
   @Override
   protected void attachBaseContext(Context base) {
     super.attachBaseContext(base);
-    MultiDex.install(this);
+    //MultiDex.install(this);
   }
 
   @Override
