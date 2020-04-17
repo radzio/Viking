@@ -10,7 +10,6 @@ import com.squareup.javapoet.TypeSpec;
 import net.droidlabs.viking.annotations.AutoModule;
 import net.droidlabs.viking.annotations.AutoProvides;
 import net.droidlabs.viking.processor.annotation.AnnotationUtil;
-import net.droidlabs.viking.processor.module.ComponentCodeBuilder;
 import net.droidlabs.viking.processor.module.ModuleCodeGenerator;
 import net.droidlabs.viking.processor.module.ModuleScopedCodeGenerator;
 import net.droidlabs.viking.processor.module.ScreenMappingsBuilder;
@@ -25,6 +24,7 @@ import javax.annotation.processing.Messager;
 import javax.annotation.processing.ProcessingEnvironment;
 import javax.annotation.processing.Processor;
 import javax.annotation.processing.RoundEnvironment;
+import javax.annotation.processing.SupportedOptions;
 import javax.lang.model.SourceVersion;
 import javax.lang.model.element.Element;
 import javax.lang.model.element.ExecutableElement;
@@ -39,16 +39,19 @@ import static net.ltgt.gradle.incap.IncrementalAnnotationProcessorType.ISOLATING
 
 @IncrementalAnnotationProcessor(ISOLATING)
 @AutoService(Processor.class)
+@SupportedOptions("viking.yolo")
 public class VikingCodeProcessor extends AbstractProcessor {
   private static final String ANNOTATION = "@" + AutoModule.class.getSimpleName();
   private ProcessingEnvironment processingEnvironment;
   private Messager messager;
 
   private List<TypeMirror> typesWithScope = new ArrayList<>();
+  private String screenMappingClassName;
 
   @Override
   public synchronized void init(ProcessingEnvironment processingEnv) {
     super.init(processingEnv);
+    screenMappingClassName = processingEnv.getOptions().getOrDefault("viking.yolo", "ScreenMappings");
     processingEnvironment = processingEnv;
     messager = processingEnv.getMessager();
   }
@@ -70,7 +73,6 @@ public class VikingCodeProcessor extends AbstractProcessor {
 
   @Override
   public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
-
     handleAutoModule(roundEnv);
     return true;
   }
@@ -196,15 +198,15 @@ public class VikingCodeProcessor extends AbstractProcessor {
       return;
     }
 
-    for (AnnotatedClass annotatedClassClass : annotatedClasses) {
-      TypeSpec componentTypeSpec = new ComponentCodeBuilder().buildTypeSpec(annotatedClassClass);
-      JavaFile componentFile = builder(annotatedClassClass.getPackage(),
-          componentTypeSpec).build();
-      componentFile.writeTo(processingEnvironment.getFiler());
-    }
+    //for (AnnotatedClass annotatedClassClass : annotatedClasses) {
+    //  TypeSpec componentTypeSpec = new ComponentCodeBuilder().buildTypeSpec(annotatedClassClass);
+    //  JavaFile componentFile = builder(annotatedClassClass.getPackage(),
+    //      componentTypeSpec).build();
+    //  componentFile.writeTo(processingEnvironment.getFiler());
+    //}
 
     JavaFile screenMappingsFile = builder("net.droidlabs.viking.di",
-        new ScreenMappingsBuilder().buildTypeSpec(annotatedClasses, typesWithScope)).build();
+        new ScreenMappingsBuilder(screenMappingClassName).buildTypeSpec(annotatedClasses, typesWithScope)).build();
     screenMappingsFile.writeTo(processingEnvironment.getFiler());
   }
 }
