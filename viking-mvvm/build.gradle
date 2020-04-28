@@ -42,7 +42,7 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation 'androidx.fragment:fragment:1.1.0-alpha06'
-    implementation 'androidx.appcompat:appcompat:1.1.0-alpha04'
+    implementation 'androidx.appcompat:appcompat:1.2.0-beta01'
     compile deps.javax
 
     implementation deps.kotlinStdLib
