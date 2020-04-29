@@ -43,7 +43,7 @@ dependencies {
 
   compileOnly files(org.gradle.internal.jvm.Jvm.current().getToolsJar())
 
-  testImplementation 'com.google.testing.compile:compile-testing:0.9'
+  testImplementation 'com.google.testing.compile:compile-testing:0.18'
   testImplementation files(org.gradle.internal.jvm.Jvm.current().getToolsJar())
   testImplementation deps.junit
   testImplementation deps.truth
