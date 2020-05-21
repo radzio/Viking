@@ -67,7 +67,7 @@ dependencies {
     implementation deps.googleMapsUtils
 
     implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0-alpha04'
-    kapt 'androidx.lifecycle:lifecycle-compiler:2.1.0-alpha04'
+    kapt 'androidx.lifecycle:lifecycle-compiler:2.3.0-alpha03'
 
     implementation deps.rxJava
     implementation deps.rxAndroid
@@ -86,7 +86,7 @@ dependencies {
     implementation 'androidx.core:core:1.1.0-alpha05'
 
     implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0-alpha04'
-    kapt 'androidx.lifecycle:lifecycle-compiler:2.1.0-alpha04'
+    kapt 'androidx.lifecycle:lifecycle-compiler:2.3.0-alpha03'
 
 //    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5.4'
 //    releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
