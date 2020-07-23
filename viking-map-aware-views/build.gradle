@@ -52,7 +52,7 @@ dependencies {
   implementation 'androidx.appcompat:appcompat:1.1.0-alpha04'
 
   implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0-alpha04'
-  kapt 'androidx.lifecycle:lifecycle-compiler:2.1.0-alpha04'
+  kapt 'androidx.lifecycle:lifecycle-compiler:2.3.0-alpha06'
 
 
   implementation deps.googlePlayServicesMaps
