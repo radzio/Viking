@@ -26,7 +26,7 @@ dependencies {
   implementation project(':viking-annotations')
   implementation project(':viking-di')
 
-  implementation deps.autoservice
+  implementation deps.autoserviceAnnotations
   kapt deps.autoservice
   implementation deps.autocommon
   implementation deps.javapoet
@@ -35,6 +35,10 @@ dependencies {
 
   compileOnly deps.dagger
   compileOnly deps.daggerAndroid
+
+  compileOnly("net.ltgt.gradle.incap:incap:0.2")
+  kapt("net.ltgt.gradle.incap:incap-processor:0.2")
+
 
   implementation deps.kotlinStdLib
   //compileOnly deps.daggerAndroidSupport
