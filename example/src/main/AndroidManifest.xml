@@ -20,14 +20,22 @@
 
   <uses-library android:name="org.apache.http.legacy" android:required="false"/>
 
-    <activity android:name="net.droidlabs.viking.example.MvvmMainActivity"/>
-    <activity android:name="net.droidlabs.viking.example.MvvmSecondActivity"/>
-
-    <activity android:name="net.droidlabs.viking.example.MapActivity">
+    <activity android:name="net.droidlabs.viking.example.MvvmMainActivity"
+      android:resizeableActivity="true"
+      android:supportsPictureInPicture="true"
+      android:configChanges=
+        "screenSize|smallestScreenSize|screenLayout|orientation"
+      >
       <intent-filter>
         <action android:name="android.intent.action.MAIN"/>
         <category android:name="android.intent.category.LAUNCHER"/>
       </intent-filter>
+
+    </activity>
+    <activity android:name="net.droidlabs.viking.example.MvvmSecondActivity"/>
+
+    <activity android:name="net.droidlabs.viking.example.MapActivity">
+
     </activity>
 
     <meta-data

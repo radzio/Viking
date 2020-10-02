@@ -4,25 +4,31 @@ import com.squareup.javapoet.AnnotationSpec;
 import com.squareup.javapoet.MethodSpec;
 import com.squareup.javapoet.TypeSpec;
 import net.droidlabs.dagger.annotations.ActivityScope;
-import java.util.List;
-import javax.lang.model.element.Modifier;
-import javax.lang.model.type.TypeMirror;
 import net.droidlabs.viking.processor.AnnotatedClass;
 import net.droidlabs.viking.processor.Util;
 import net.droidlabs.viking.processor.annotation.AnnotationAttributesBuilder;
 import net.droidlabs.viking.processor.annotation.AnnotationUtil;
+import java.util.List;
+import javax.lang.model.element.Modifier;
+import javax.lang.model.type.TypeMirror;
 import dagger.Module;
 
 import static com.squareup.javapoet.ClassName.get;
 
 public class ScreenMappingsBuilder {
 
+  private final String className;
+
+  public ScreenMappingsBuilder(String className) {
+    this.className = className;
+  }
+
   public TypeSpec buildTypeSpec(List<AnnotatedClass> annotatedClasses,
       List<TypeMirror> typesWithScope) {
 
     AnnotationSpec.Builder moduleAnnotationBuilder = AnnotationSpec.builder(Module.class);
 
-    TypeSpec.Builder builder = TypeSpec.classBuilder("ScreenMappings")
+    TypeSpec.Builder builder = TypeSpec.classBuilder(className)
         .addModifiers(Modifier.PUBLIC, Modifier.ABSTRACT)
         .addAnnotation(moduleAnnotationBuilder.build());
 

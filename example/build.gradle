@@ -1,23 +1,16 @@
+import net.droidlabs.viking.gradle.VikingModule
+
 apply plugin: 'com.android.application'
 apply plugin: "kotlin-android"
 apply plugin: 'kotlin-kapt'
 apply plugin: 'org.jetbrains.dokka-android'
 apply from: '../jacoco-android.gradle'
+apply plugin: VikingModule
 
 android {
 
-    compileOptions {
-        encoding "UTF-8"
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-
-    compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
     defaultConfig {
         applicationId "net.droidlabs.viking.example"
-        minSdkVersion rootProject.ext.minSdkVersion
-        targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
         multiDexEnabled true
@@ -30,14 +23,6 @@ android {
         }
     }
 
-    dataBinding {
-        enabled = true
-    }
-
-    lintOptions {
-        abortOnError false
-    }
-
     dokka {
         outputFormat = 'html'
         outputDirectory = "$buildDir/javadoc"
@@ -47,6 +32,9 @@ android {
 kapt {
     generateStubs = true
     correctErrorTypes = true
+    arguments {
+        arg("viking.yolo", "Ssij")
+    }
 }
 
 dependencies {
@@ -57,44 +45,21 @@ dependencies {
 
     implementation project(":viking-annotations")
     implementation project(":viking-di")
-    implementation project(":viking-mvp")
     implementation project(":viking-mvvm")
     implementation project(":viking-reactive")
     implementation project(":viking-mapbindings")
     implementation project(":viking-map-aware-views")
 
-    implementation deps.googlePlayServicesMaps
-    implementation deps.googleMapsUtils
+    implementation "com.google.android.gms:play-services-maps:17.0.0"
+    implementation "com.google.maps.android:android-maps-utils:0.5"
 
-    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0-rc03'
-    kapt 'androidx.lifecycle:lifecycle-compiler:2.3.0-beta01'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    //kapt 'androidx.lifecycle:lifecycle-compiler:2.2.0'
 
-    implementation deps.rxJava
-    implementation deps.rxAndroid
+    implementation "androidx.lifecycle:lifecycle-common-java8:2.2.0"
 
-    implementation deps.kotlinStdLib
+    implementation 'androidx.appcompat:appcompat:1.2.0-beta01'
+    implementation 'androidx.core:core:1.3.0-rc01'
 
-    implementation deps.dagger
-    kapt deps.daggerCompiler
-    implementation deps.daggerAndroid
-    implementation (deps.daggerAndroidSupport, {
-        exclude group: 'com.android.support'
-    })
-    kapt deps.daggerAndroidProccesor
-
-    implementation 'androidx.appcompat:appcompat:1.3.0-alpha02'
-    implementation 'androidx.core:core:1.2.0-rc01'
-
-    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0-rc03'
-    kapt 'androidx.lifecycle:lifecycle-compiler:2.3.0-beta01'
-
-//    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5.4'
-//    releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
-
-    androidTestImplementation 'androidx.annotation:annotation:1.1.0-beta01'
-    androidTestImplementation 'androidx.test:runner:1.2.0-alpha03'
-    androidTestImplementation 'androidx.test:rules:1.3.0'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0-alpha03'
-
-    testImplementation deps.junit
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
 }
