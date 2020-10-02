@@ -1,5 +1,8 @@
 apply plugin: 'com.android.library'
-// apply plugin: 'com.novoda.bintray-release'
+apply plugin: "kotlin-android"
+apply plugin: 'kotlin-kapt'
+apply plugin: 'com.novoda.bintray-release'
+apply plugin: 'org.jetbrains.dokka-android'
 apply from: '../jacoco-android.gradle'
 
 android {
@@ -35,6 +38,11 @@ android {
     lintOptions {
         abortOnError false
     }
+
+    dokka {
+        outputFormat = 'html'
+        outputDirectory = "$buildDir/javadoc"
+    }
 }
 
 dependencies {
@@ -42,7 +50,8 @@ dependencies {
 
     implementation deps.googlePlayServicesMaps
     implementation deps.googleMapsUtils
-    //implementation deps.googlePlayServicesMaps
+
+    implementation deps.kotlinStdLib
 
     androidTestCompile('androidx.test.espresso:espresso-core:3.1.0-alpha3', {
         exclude group: 'com.android.support', module: 'support-annotations'
@@ -53,13 +62,13 @@ dependencies {
     testCompile deps.robolectric
 }
 
-//publish {
-//    userOrg = 'tangoagency'
-//    groupId = 'agency.tango.android.viking'
-//    artifactId = 'viking-mapbindings'
-//    publishVersion = '0.0.1'
-//    desc = ''
-//    website = 'https://github.com/TangoAgency/Viking'
-//}
+publish {
+    userOrg = 'radzio'
+    groupId = 'net.droidlabs.android.viking'
+    artifactId = 'viking-mapbindings'
+    publishVersion = '0.0.1'
+    desc = ''
+    website = 'https://github.com/radzio/Viking'
+}
 
 apply from: rootProject.file('gradle/gradle-mvn-push.gradle')

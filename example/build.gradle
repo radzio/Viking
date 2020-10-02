@@ -1,4 +1,7 @@
 apply plugin: 'com.android.application'
+apply plugin: "kotlin-android"
+apply plugin: 'kotlin-kapt'
+apply plugin: 'org.jetbrains.dokka-android'
 apply from: '../jacoco-android.gradle'
 
 android {
@@ -12,7 +15,7 @@ android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
     defaultConfig {
-        applicationId "agency.tango.viking.example"
+        applicationId "net.droidlabs.viking.example"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
@@ -34,13 +37,23 @@ android {
     lintOptions {
         abortOnError false
     }
+
+    dokka {
+        outputFormat = 'html'
+        outputDirectory = "$buildDir/javadoc"
+    }
+}
+
+kapt {
+    generateStubs = true
+    correctErrorTypes = true
 }
 
 dependencies {
 
-   // annotationProcessor project(":viking-processor")
+    kapt project(":viking-processor")
 
-    annotationProcessor "com.github.TangoAgency.Viking:viking-processor:50af0514b9"
+    //kapt "com.github.radzio.Viking:viking-processor:9c4e970a55"
 
     implementation project(":viking-annotations")
     implementation project(":viking-di")
@@ -53,32 +66,34 @@ dependencies {
     implementation deps.googlePlayServicesMaps
     implementation deps.googleMapsUtils
 
-    implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0-alpha04'
-    annotationProcessor 'androidx.lifecycle:lifecycle-compiler:2.1.0-alpha04'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0-rc03'
+    kapt 'androidx.lifecycle:lifecycle-compiler:2.3.0-beta01'
 
     implementation deps.rxJava
     implementation deps.rxAndroid
 
+    implementation deps.kotlinStdLib
+
     implementation deps.dagger
-    annotationProcessor deps.daggerCompiler
+    kapt deps.daggerCompiler
     implementation deps.daggerAndroid
     implementation (deps.daggerAndroidSupport, {
         exclude group: 'com.android.support'
     })
-    annotationProcessor deps.daggerAndroidProccesor
+    kapt deps.daggerAndroidProccesor
 
-    implementation 'androidx.appcompat:appcompat:1.1.0-alpha04'
-    implementation 'androidx.core:core:1.1.0-alpha05'
+    implementation 'androidx.appcompat:appcompat:1.3.0-alpha02'
+    implementation 'androidx.core:core:1.2.0-rc01'
 
-    implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0-alpha04'
-    annotationProcessor 'androidx.lifecycle:lifecycle-compiler:2.1.0-alpha04'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0-rc03'
+    kapt 'androidx.lifecycle:lifecycle-compiler:2.3.0-beta01'
 
 //    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5.4'
 //    releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
 
     androidTestImplementation 'androidx.annotation:annotation:1.1.0-beta01'
     androidTestImplementation 'androidx.test:runner:1.2.0-alpha03'
-    androidTestImplementation 'androidx.test:rules:1.2.0-alpha03'
+    androidTestImplementation 'androidx.test:rules:1.3.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0-alpha03'
 
     testImplementation deps.junit

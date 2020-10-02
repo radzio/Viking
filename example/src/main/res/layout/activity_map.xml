@@ -4,10 +4,9 @@
         xmlns:tools="http://schemas.android.com/tools"
   >
   <data>
-    <import type="java.lang.String"/>
     <variable
       name="viewModel"
-      type="agency.tango.viking.example.MapViewModel"
+      type="net.droidlabs.viking.example.MapViewModel"
       />
   </data>
 
@@ -16,10 +15,10 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="agency.tango.viking.example.MapActivity"
+    tools:context="net.droidlabs.viking.example.net.tango.viking.example.MapActivity"
     >
 
-    <agency.tango.viking.bindings.map.GoogleMapView
+    <net.droidlabs.viking.bindings.map.GoogleMapView
       android:id="@+id/map"
       android:layout_width="match_parent"
       android:layout_height="0dp"
@@ -53,7 +52,7 @@
       android:layout_width="match_parent"
       android:layout_height="48dp"
       android:gravity="center"
-      android:text="@{String.valueOf(viewModel.zoom)}"
+      android:text="@{viewModel.location}"
       tools:text="Location: 15.2015, 51.2012"
       />
 

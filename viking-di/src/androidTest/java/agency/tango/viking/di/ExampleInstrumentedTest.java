@@ -1,10 +1,10 @@
-package agency.tango.viking.di;
+package net.droidlabs.viking.di;
 
 import android.content.Context;
-import org.junit.Test;
-import org.junit.runner.RunWith;
 import androidx.test.InstrumentationRegistry;
 import androidx.test.runner.AndroidJUnit4;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 
 import static org.junit.Assert.assertEquals;
 
@@ -20,6 +20,6 @@ public class ExampleInstrumentedTest {
     // Context of the app under test.
     Context appContext = InstrumentationRegistry.getTargetContext();
 
-    assertEquals("agency.tango.viking.di.test", appContext.getPackageName());
+    assertEquals("net.droidlabs.viking.di.test", appContext.getPackageName());
   }
 }

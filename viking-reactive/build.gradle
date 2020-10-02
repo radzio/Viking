@@ -1,5 +1,8 @@
 apply plugin: 'com.android.library'
-// apply plugin: 'com.novoda.bintray-release'
+apply plugin: "kotlin-android"
+apply plugin: 'kotlin-kapt'
+apply plugin: 'com.novoda.bintray-release'
+apply plugin: 'org.jetbrains.dokka-android'
 apply from: '../jacoco-android.gradle'
 
 android {
@@ -22,6 +25,11 @@ android {
     }
   }
 
+  dokka {
+    outputFormat = 'html'
+    outputDirectory = "$buildDir/javadoc"
+  }
+
 }
 
 dependencies {
@@ -30,10 +38,12 @@ dependencies {
   provided project(":viking-mvp")
 
   provided deps.dagger
-  annotationProcessor deps.daggerCompiler
+  kapt deps.daggerCompiler
 
   compile deps.rxJava
   compile deps.rxAndroid
+
+  implementation deps.kotlinStdLib
 
   androidTestCompile('androidx.test.espresso:espresso-core:3.1.0-alpha3', {
     exclude group: 'com.android.support', module: 'support-annotations'
@@ -42,19 +52,19 @@ dependencies {
   testCompile deps.junit
   testCompile deps.mockito
   testCompile deps.truth
-  testCompile deps.robolectric;
+  testCompile deps.robolectric
 
   testCompile project(":viking-mvvm")
   testCompile project(":viking-mvp")
 }
 
-//publish {
-//  userOrg = 'tangoagency'
-//  groupId = 'agency.tango.android.viking'
-//  artifactId = 'viking-reactive'
-//  publishVersion = '0.0.1'
-//  desc = ''
-//  website = 'https://github.com/TangoAgency/Viking'
-//}
+publish {
+  userOrg = 'radzio'
+  groupId = 'net.droidlabs.android.viking'
+  artifactId = 'viking-reactive'
+  publishVersion = '0.0.1'
+  desc = ''
+  website = 'https://github.com/radzio/Viking'
+}
 
 apply from: rootProject.file('gradle/gradle-mvn-push.gradle')

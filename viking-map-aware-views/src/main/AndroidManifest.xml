@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="agency.tango.viking.map.views"
+          package="net.droidlabs.viking.map.views"
   >
 
   <application

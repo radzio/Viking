@@ -1,17 +1,23 @@
 apply plugin: 'java'
-// apply plugin: 'com.novoda.bintray-release'
+apply plugin: 'com.novoda.bintray-release'
+apply plugin: 'org.jetbrains.dokka'
 apply from: '../jacoco.gradle'
 
-def logger = new com.android.build.gradle.internal.LoggerWrapper(project.logger)
-def sdkHandler = new com.android.build.gradle.internal.SdkHandler(project, logger)
-for (File file : sdkHandler.sdkLoader.repositories) {
-    repositories.maven {
-        url = file.toURI()
-    }
-}
+//def logger = new com.android.build.gradle.internal.LoggerWrapper(project.logger)
+//def sdkHandler = new com.android.build.gradle.internal.SdkHandler(project, logger)
+//for (File file : sdkHandler.sdkLoader.repositories) {
+//    repositories.maven {
+//        url = file.toURI()
+//    }
+//}
 
 sourceCompatibility = rootProject.ext.sourceCompatibilityVersion
 targetCompatibility = rootProject.ext.targetCompatibilityVersion
+
+dokka {
+    outputFormat = 'html'
+    outputDirectory = "$buildDir/javadoc"
+}
 
 dependencies {
 
@@ -20,14 +26,14 @@ dependencies {
     compileOnly 'com.github.radzio:architecture-compontents:67c48bbc85'
 }
 
-//publish {
-//    userOrg = 'tangoagency'
-//    groupId = 'agency.tango.android.viking'
-//    artifactId = 'viking-annotations'
-//    publishVersion = '0.0.1'
-//    desc = ''
-//    website = 'https://github.com/TangoAgency/Viking'
-//}
+publish {
+    userOrg = 'radzio'
+    groupId = 'net.droidlabs.android.viking'
+    artifactId = 'viking-annotations'
+    publishVersion = '0.0.1'
+    desc = ''
+    website = 'https://github.com/radzio/Viking'
+}
 
 
 apply from: rootProject.file('gradle/gradle-mvn-push.gradle')

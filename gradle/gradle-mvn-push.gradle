@@ -135,14 +135,14 @@ afterEvaluate { project ->
       }
     }
 
-    task androidJavadocs(type: Javadoc) {
-      source = android.sourceSets.main.java.source
-      classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
-    }
+//    task androidJavadocs(type: Javadoc) {
+//      source = android.sourceSets.main.java.source
+//      classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+//    }
 
-    task androidJavadocsJar(type: Jar, dependsOn: androidJavadocs) {
+    task androidJavadocsJar(type: Jar, dependsOn: dokka) {
       classifier = 'javadoc'
-      from androidJavadocs.destinationDir
+      from "$buildDir/javadoc"
     }
 
     task androidSourcesJar(type: Jar) {
@@ -191,9 +191,9 @@ afterEvaluate { project ->
       from sourceSets.main.allSource
     }
 
-    task javadocJar(type: Jar, dependsOn:javadoc) {
+    task javadocJar(type: Jar, dependsOn:dokka) {
       classifier = 'javadoc'
-      from javadoc.destinationDir
+      from "$buildDir/javadoc"
     }
   }
 
