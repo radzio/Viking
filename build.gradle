@@ -145,6 +145,6 @@ ext.deps = [// Android
             mockito                          : 'org.mockito:mockito-core:2.7.5',
             truth                            : 'com.google.truth:truth:0.28',
             robolectric                      : 'org.robolectric:robolectric:3.2.2',
-            compiletesting                   : 'com.google.testing.compile:compile-testing:0.9',
+            compiletesting                   : 'com.google.testing.compile:compile-testing:0.18',
             autoservice                      : 'com.google.auto.service:auto-service:1.0-rc6',
             autocommon                       : 'com.google.auto:auto-common:0.6',]
