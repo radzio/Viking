@@ -27,7 +27,7 @@ subprojects {
       classpath ("de.mannodermaus.gradle.plugins:android-junit5:1.5.1.0")
       classpath( "org.jetbrains.dokka:dokka-android-gradle-plugin:0.9.18")
       classpath( "org.jetbrains.dokka:dokka-gradle-plugin:0.9.18")
-      classpath( "me.tatarka:gradle-retrolambda:3.7.0")
+      classpath( "me.tatarka:gradle-retrolambda:3.7.1")
       //classpath( "com.dicedmelon.gradle:jacoco-android:0.1.4")
       classpath( "com.github.arturdm:jacoco-android-gradle-plugin:dd9d8ceaa9")
     }
