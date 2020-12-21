@@ -24,7 +24,7 @@ subprojects {
 
       classpath( "com.github.marandaneto:bintray-release:3bde108072")
       classpath( "org.jetbrains.kotlin:kotlin-gradle-plugin:1.3.50")
-      classpath ("de.mannodermaus.gradle.plugins:android-junit5:1.5.1.0")
+      classpath ("de.mannodermaus.gradle.plugins:android-junit5:1.7.0.0")
       classpath( "org.jetbrains.dokka:dokka-android-gradle-plugin:0.9.18")
       classpath( "org.jetbrains.dokka:dokka-gradle-plugin:0.9.18")
       classpath( "me.tatarka:gradle-retrolambda:3.7.0")
