@@ -19,7 +19,7 @@ subprojects {
       maven ( url = "https://jitpack.io" )
     }
     dependencies {
-      classpath( "com.android.tools.build:gradle:3.6.1")
+      classpath( "com.android.tools.build:gradle:4.2.0")
       //classpath( "com.novoda:bintray-release:0.9.2")
 
       classpath( "com.github.marandaneto:bintray-release:3bde108072")
