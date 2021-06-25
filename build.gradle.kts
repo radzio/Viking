@@ -23,7 +23,7 @@ subprojects {
       //classpath( "com.novoda:bintray-release:0.9.2")
 
       classpath( "com.github.marandaneto:bintray-release:3bde108072")
-      classpath( "org.jetbrains.kotlin:kotlin-gradle-plugin:1.3.50")
+      classpath( "org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.20")
       classpath ("de.mannodermaus.gradle.plugins:android-junit5:1.5.1.0")
       classpath( "org.jetbrains.dokka:dokka-android-gradle-plugin:0.9.18")
       classpath( "org.jetbrains.dokka:dokka-gradle-plugin:0.9.18")
