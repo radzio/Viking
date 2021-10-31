@@ -2,7 +2,7 @@ import net.droidlabs.viking.gradle.Deps
 import net.droidlabs.viking.gradle.VikingModule
 
 apply plugin: 'com.android.library'
-apply plugin: 'com.novoda.bintray-release'
+// apply plugin: 'com.novoda.bintray-release'
 apply plugin: 'org.jetbrains.dokka'
 apply from: '../jacoco-android.gradle'
 apply plugin: VikingModule
@@ -18,13 +18,13 @@ dependencies {
     implementation Deps.googleMapsUtils
 }
 
-publish {
-    userOrg = 'radzio'
-    groupId = 'net.droidlabs.android.viking'
-    artifactId = 'viking-mapbindings'
-    publishVersion = '0.0.1'
-    desc = ''
-    website = 'https://github.com/radzio/Viking'
-}
+//publish {
+//    userOrg = 'radzio'
+//    groupId = 'net.droidlabs.android.viking'
+//    artifactId = 'viking-mapbindings'
+//    publishVersion = '0.0.1'
+//    desc = ''
+//    website = 'https://github.com/radzio/Viking'
+//}
 
 apply from: rootProject.file('gradle/gradle-mvn-push.gradle')
