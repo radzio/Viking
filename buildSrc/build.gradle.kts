@@ -5,7 +5,7 @@ buildscript {
     }
 
     dependencies {
-        classpath("org.jetbrains.kotlin:kotlin-serialization:1.3.70")
+
     }
 }
 
@@ -17,7 +17,6 @@ repositories {
 
 plugins {
     `kotlin-dsl`
-    kotlin("plugin.serialization") version "1.3.70"
 }
 
 kotlinDslPluginOptions {
@@ -36,10 +35,6 @@ gradlePlugin {
 dependencies {
     implementation(gradleApi())
 
-    implementation("com.android.tools.build:gradle:3.5.3")
-    implementation("io.ktor:ktor-client-core:1.3.1")
-    implementation("io.ktor:ktor-client-okhttp:1.3.1")
-    implementation("io.ktor:ktor-client-json:1.3.1")
-    implementation("io.ktor:ktor-client-auth-jvm:1.3.1")
-    implementation("io.ktor:ktor-client-serialization-jvm:1.3.1")
+    implementation("com.android.tools.build:gradle:4.1.1")
+    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.21")
 }

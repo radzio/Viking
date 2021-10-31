@@ -19,12 +19,12 @@
     >
 
   <uses-library android:name="org.apache.http.legacy" android:required="false"/>
-
+<!--  android:configChanges=
+        "screenSize|smallestScreenSize|screenLayout|orientation" -->
     <activity android:name="net.droidlabs.viking.example.MvvmMainActivity"
       android:resizeableActivity="true"
       android:supportsPictureInPicture="true"
-      android:configChanges=
-        "screenSize|smallestScreenSize|screenLayout|orientation"
+
       >
       <intent-filter>
         <action android:name="android.intent.action.MAIN"/>

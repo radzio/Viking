@@ -140,7 +140,7 @@ afterEvaluate { project ->
 //      classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
 //    }
 
-    task androidJavadocsJar(type: Jar, dependsOn: dokka) {
+    task androidJavadocsJar(type: Jar, dependsOn: dokkaHtml) {
       classifier = 'javadoc'
       from "$buildDir/javadoc"
     }
@@ -191,7 +191,7 @@ afterEvaluate { project ->
       from sourceSets.main.allSource
     }
 
-    task javadocJar(type: Jar, dependsOn:dokka) {
+    task javadocJar(type: Jar, dependsOn:dokkaHtml) {
       classifier = 'javadoc'
       from "$buildDir/javadoc"
     }
