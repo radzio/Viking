@@ -3,15 +3,14 @@ import net.droidlabs.viking.gradle.VikingModule
 
 apply plugin: 'com.android.library'
 apply plugin: 'com.novoda.bintray-release'
-apply plugin: 'org.jetbrains.dokka-android'
+apply plugin: 'org.jetbrains.dokka'
 apply from: '../jacoco-android.gradle'
 apply plugin: VikingModule
 android {
 
-    dokka {
-        outputFormat = 'html'
-        outputDirectory = "$buildDir/javadoc"
-    }
+tasks.dokkaHtml.configure {
+    outputDirectory.set(file("$buildDir/javadoc"))
+}
 }
 
 dependencies {

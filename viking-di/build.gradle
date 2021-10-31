@@ -5,14 +5,13 @@ apply plugin: 'java'
 apply plugin: "kotlin"
 apply plugin: 'kotlin-kapt'
 apply plugin: 'com.novoda.bintray-release'
-apply plugin: 'org.jetbrains.dokka-android'
+apply plugin: 'org.jetbrains.dokka'
 apply from: '../jacoco.gradle'
 
 apply plugin: VikingModule
 
-dokka {
-  outputFormat = 'html'
-  outputDirectory = "$buildDir/javadoc"
+tasks.dokkaHtml.configure {
+  outputDirectory.set(file("$buildDir/javadoc"))
 }
 
 dependencies {
@@ -25,9 +24,9 @@ dependencies {
 
   implementation Deps.kotlinStdLib
 
-  compileOnly files(org.gradle.internal.jvm.Jvm.current().getToolsJar())
+//  compileOnly files(org.gradle.internal.jvm.Jvm.current().getToolsJar())
 
-  testCompile files(org.gradle.internal.jvm.Jvm.current().getToolsJar())
+//  testCompile files(org.gradle.internal.jvm.Jvm.current().getToolsJar())
 }
 
 publish {

@@ -1,6 +1,5 @@
 import net.droidlabs.viking.gradle.Deps
 import net.droidlabs.viking.gradle.VikingModule
-import org.gradle.internal.jvm.Jvm
 
 apply plugin: 'java'
 apply plugin: "kotlin"
@@ -12,9 +11,8 @@ apply from: '../jacoco.gradle'
 apply plugin: VikingModule
 
 
-dokka {
-  outputFormat = 'html'
-  outputDirectory = "$buildDir/javadoc"
+tasks.dokkaHtml.configure {
+  outputDirectory.set(file("$buildDir/javadoc"))
 }
 
 dependencies {
@@ -37,9 +35,9 @@ dependencies {
 
   implementation Deps.kotlinStdLib
 
-  compileOnly files(Jvm.current().getToolsJar())
+ // compileOnly files(Jvm.current().getToolsJar())
 
-  testImplementation files(Jvm.current().getToolsJar())
+  //testImplementation files(Jvm.current().getToolsJar())
   testImplementation Deps.junit4
   testImplementation Deps.truth
 

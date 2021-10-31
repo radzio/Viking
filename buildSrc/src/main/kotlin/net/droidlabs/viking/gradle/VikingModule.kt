@@ -4,6 +4,7 @@ import com.android.build.gradle.AppExtension
 import com.android.build.gradle.AppPlugin
 import com.android.build.gradle.LibraryExtension
 import com.android.build.gradle.LibraryPlugin
+import org.gradle.api.JavaVersion
 import org.gradle.api.JavaVersion.VERSION_1_8
 import org.gradle.api.Plugin
 import org.gradle.api.Project
@@ -11,6 +12,8 @@ import org.gradle.api.plugins.JavaPlugin
 import org.gradle.api.plugins.JavaPluginExtension
 import org.gradle.kotlin.dsl.dependencies
 import org.gradle.kotlin.dsl.hasPlugin
+import org.gradle.kotlin.dsl.withType
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 class VikingModule : Plugin<Project> {
 
@@ -62,8 +65,10 @@ class VikingModule : Plugin<Project> {
 
               //android-ktx
               Deps.androidxCoreKtx,
+              Deps.androidxLifeCycle,
               Deps.androidxLifecycleExtensions,
               Deps.androidxLifecycleViewModelKtx,
+              Deps.androidXLifecycleRuntime,
               Deps.androidxCollectionKtx,
               Deps.androidxActivityKtx,
               Deps.androidxFragmentKtx,
@@ -103,6 +108,11 @@ class VikingModule : Plugin<Project> {
         }
       }
     }
+
+    project.tasks.withType<KotlinCompile> {
+      kotlinOptions.jvmTarget = VERSION_1_8.toString()
+    }
+
   }
 }
 
@@ -135,7 +145,7 @@ private fun LibraryExtension.configureLibrary(project: Project) {
 
   lintOptions {
     isAbortOnError = false
-    disable = setOf("LintBaseline")
+    //setDisable(mutableSetOf("LintBaseline"))
   }
 
   defaultConfig.apply {
@@ -177,7 +187,7 @@ private fun AppExtension.configureApp(project: Project) {
 
   lintOptions {
     isAbortOnError = false
-    disable = setOf("LintBaseline")
+    setDisable(mutableSetOf("LintBaseline"))
   }
 
   defaultConfig.apply {

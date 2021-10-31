@@ -9,6 +9,7 @@ include(
     ":viking-reactive",
     
     ":viking-mapbindings",
-    ":viking-map-aware-views"
+    ":viking-map-aware-views",
+    ":viking-navigation"
 )
 
