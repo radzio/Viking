@@ -19,11 +19,11 @@ subprojects {
       maven ( url = "https://jitpack.io" )
     }
     dependencies {
-      classpath( "com.android.tools.build:gradle:4.1.1")
+      classpath( "com.android.tools.build:gradle:7.0.0")
       //classpath( "com.novoda:bintray-release:0.9.2")
 
       classpath( "com.github.marandaneto:bintray-release:3bde108072")
-      classpath( "org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.21")
+      classpath( "org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.10")
       classpath ("de.mannodermaus.gradle.plugins:android-junit5:1.7.0.0")
       //classpath( "org.jetbrains.dokka:dokka-android-gradle-plugin:1.4.20")
       classpath( "org.jetbrains.dokka:dokka-gradle-plugin:1.4.20")
@@ -53,7 +53,8 @@ buildscript {
     maven ( url = "https://jitpack.io" )
   }
 
-  val kotlin_version by extra("1.4.21")
+  val kotlin_version by extra("1.5.10")
+
   dependencies {
     classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version")
   }

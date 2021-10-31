@@ -14,9 +14,9 @@ import net.droidlabs.viking.gradle.Versions.timberVer
 import net.droidlabs.viking.gradle.Versions.truthVer
 
 object Versions {
-  val kotlin_version = "1.4.21"
-  val kotlinCoroutinesVer = "1.4.2"
-  val androidGradlePluginVer = "4.1.1"
+  val kotlin_version = "1.5.10"
+  val kotlinCoroutinesVer = "1.5.1"
+  val androidGradlePluginVer = "7.0.0"
 
   val compileSdkVer = 29
   val targetSdkVer = 29
