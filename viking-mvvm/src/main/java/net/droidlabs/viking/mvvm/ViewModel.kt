@@ -68,13 +68,6 @@ abstract class ViewModel(
         executeOnResultActions(requestCode, data, resultCode == RESULT_OK)
     }
 
-    class SsijContext()
-
-    @CallSuper
-    open fun ssij(block: SsijContext.() -> Unit ) {
-        block(SsijContext())
-    }
-
     @CallSuper
     fun saveState(outState: Bundle) {
         for (i in childViewModels.indices) {

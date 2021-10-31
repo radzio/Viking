@@ -14,9 +14,9 @@ import net.droidlabs.viking.gradle.Versions.timberVer
 import net.droidlabs.viking.gradle.Versions.truthVer
 
 object Versions {
-  val kotlin_version = "1.3.70"
-  val kotlinCoroutinesVer = "1.3.4"
-  val androidGradlePluginVer = "3.5.3"
+  val kotlin_version = "1.4.21"
+  val kotlinCoroutinesVer = "1.4.2"
+  val androidGradlePluginVer = "4.1.1"
 
   val compileSdkVer = 29
   val targetSdkVer = 29
@@ -67,9 +67,11 @@ object Deps {
   val androidxCoreKtx = "androidx.core:core-ktx:1.2.0"
   val androidxCollectionKtx = "androidx.collection:collection-ktx:1.1.0"
   val androidxLifecycleViewModelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
+  val androidxLifeCycle = "androidx.lifecycle:lifecycle-common-java8:2.2.0"
+  val androidXLifecycleRuntime = "androidx.lifecycle:lifecycle-runtime-ktx:2.2.0"
   val androidxLifecycleExtensions = "androidx.lifecycle:lifecycle-extensions:2.2.0"
-  val androidxActivityKtx = "androidx.activity:activity-ktx:1.1.0"
-  val androidxFragmentKtx = "androidx.fragment:fragment-ktx:1.2.4"
+  val androidxActivityKtx = "androidx.activity:activity-ktx:1.2.0-rc01"
+  val androidxFragmentKtx = "androidx.fragment:fragment-ktx:1.3.0-rc01"
   val androidxReactiveExtensionsKtx = "androidx.lifecycle:lifecycle-reactivestreams-ktx:2.2.0"
 
   val timber = "com.jakewharton.timber:timber:$timberVer"

@@ -10,7 +10,7 @@
   </data>
 
   <LinearLayout
-    android:orientation="horizontal"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
@@ -31,9 +31,27 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
 
-      android:text="Test"
+      android:text="Request Permission"
 
-    android:onClick="@{() -> viewModel.click()}"
+    android:onClick="@{() -> viewModel.requestPermission()}"
+      />
+
+    <Button
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+
+      android:text="Open for result"
+
+      android:onClick="@{() -> viewModel.openForResult()}"
+      />
+
+    <Button
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+
+      android:text="Open activity"
+
+      android:onClick="@{() -> viewModel.openActivity()}"
       />
 
   </LinearLayout>

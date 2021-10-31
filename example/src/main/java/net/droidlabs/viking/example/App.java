@@ -2,6 +2,7 @@ package net.droidlabs.viking.example;
 
 import android.content.Context;
 import net.droidlabs.viking.example.di.DaggerDiComponent;
+import net.droidlabs.viking.navigation.Navigation;
 import dagger.android.AndroidInjector;
 import dagger.android.DaggerApplication;
 
@@ -20,6 +21,8 @@ public class App extends DaggerApplication {
     //  return;
     //}
     //LeakCanary.install(this);
+
+    registerActivityLifecycleCallbacks(new Navigation());
   }
 
   @Override
