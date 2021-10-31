@@ -366,7 +366,7 @@ public class GoogleMapView<T> extends MapView {
       ClusterItemWindowInfoAdapter<ClusterItem> adapter = new ClusterItemWindowInfoAdapter<>(
           infoWindowAdapterFactory.createInfoWindowAdapter(getContext()), clusterManager);
 
-      clusterManager.getClusterMarkerCollection().setOnInfoWindowAdapter(adapter);
+      clusterManager.getClusterMarkerCollection().setInfoWindowAdapter(adapter);
       infoWindowAdapter.addInfoWindowAdapter(adapter);
     });
   }
@@ -382,7 +382,7 @@ public class GoogleMapView<T> extends MapView {
       ClusterWindowInfoAdapter adapter = new ClusterWindowInfoAdapter(
           infoWindowAdapterFactory.createInfoWindowAdapter(getContext()), clusterManager);
 
-      clusterManager.getClusterMarkerCollection().setOnInfoWindowAdapter(adapter);
+      clusterManager.getClusterMarkerCollection().setInfoWindowAdapter(adapter);
       infoWindowAdapter.addInfoWindowAdapter(adapter);
     });
   }
